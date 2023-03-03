@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:opsz,wght@8..144,100&display=swap');
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+*{
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url(./img/backgroun-logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-container{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: auto;
+}
+
+img{
+    display: none;
+}
+
+.form{
+    align-items: center;
+    background-color: black;
+    border: 2rem solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+    height: fit-content;
+    justify-content: center;
+    padding: 15px;
+    width: fit-content;
+}
+
+h1{
+    color: white;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.form-control{
+    position: relative;
+}
+
+.form-control label{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+}
+
+.form-control input{
+    background-color: white;
+    border-color: white;
+    border-radius: 10px;
+    font-size: 12px;
+    height: 3vh;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    width: 20vw;
+}
+
+.form-control i{
+    color: red;
+    font-size: 1rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 1.7rem;
+    visibility: hidden;
+}
+
+.form-control small{
+    color: red;
+    font-size: 12px;
+    left: 0.1rem;
+    position: absolute;
+    top: 3.1rem;
+    visibility: hidden;
+}
+
+.submit{
+    background-color: white;
+    border-color:white;
+    border-radius: 10px;
+    cursor: pointer;
+    color: black;
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 10vw;
+    height: 4vh;
+}
+
+.submit:hover{
+    background-color: black;
+    color: white;
+}
+
+form p{
+    color: white;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.form-control.success input{
+    border-color: greenyellow;
+}
+
+.form-control.success i.fa-check-circle{
+    visibility: visible;
+    color: greenyellow;
+}
+
+.form-control.error i.fa-exclamation-circle{
+    visibility: visible;
+    color: red;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.form-control.error input{
+    border-color: red;
+}
+
+form a:visited{
+    color: white;
+}
+
+a:visited{
+    color: black;
+}
+
+p{
+    color: black;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE */
+@media only screen and (max-width: 600px) {
+    body{
+        background-color: black;
+    }
+
+    img{
+        display: block;
+        position: absolute;
+        opacity: 0.15;
+    }
+
+    .form-control input{
+        width: 70vw;
+    }
+
+    .submit{
+        width: 5rem;
+    }
+
+    p, a:visited{
+        color: white;
+    }
+}
