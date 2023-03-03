@@ -1,0 +1,102 @@
+<form>
+    <mat-form-field>
+        <input type="text" placeholder="Add shift">
+    </mat-form-field>
+
+    <button>+</button>
+
+    <button>SAVE</button>
+</form>
+
+<form [formGroup]="shiftForm"(ngSubmit)="addShift()">
+
+        <mat-form-field>
+            <input matInput placeholder="Shift Name" formControlName="name_shift">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-select placeholder="Shift Slug" formControlName="slug_shift">
+                <mat-option *ngFor="let slug of slugs" [value]="slug.value">
+                    {{ slug.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+            
+        <mat-form-field>
+            <input matInput placeholder="Workplace" formControlName="workplace">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Start Shift" formControlName="start_shift">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="End Shift" formControlName="end_shift">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Hourly Wage"  formControlName="hourly_wage">
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Comments" formControlName="comments">
+        </mat-form-field>
+      
+        <button mat-raised-button color="primary" (click)="addShift()">Add Shift</button>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="shift-edit" id="shift-edit">
+    <header>
+        <form class="new-shift-form" id="new-shift-form">
+            <input type="text" class="new-shift-input" id="new-shift-input" placeholder="Add shift">
+            <button class="add-new-shift-input" id="add-new-shift-input">+</button>
+            <button class="save" id="save">save</button>
+        </form>
+    </header>
+
+    <div class="shifts">
+        <input type="text" class="shift-name"> 
+
+        <select class="shift-slug">
+            <option class="shift-slug-option">shift A</option>
+            <option class="shift-slug-option">shift B</option>
+            <option class="shift-slug-option">shift C</option>
+            <option class="shift-slug-option">shift D</option>
+            <option class="shift-slug-option">shift E</option>
+        </select>   
+        
+        <select class="workplace">
+            <option class="workplace-option">workplace A</option>
+            <option class="workplace-option">workplace B</option>
+            <option class="workplace-option">workplace C</option>
+            <option class="workplace-option">workplace D</option>
+            <option class="workplace-option">workplace E</option>
+        </select>
+
+        <div class="start-end-shift">
+            
+        </div>
+    </div>
+
+    <main>
+        <div class="shifts" id="shifts">
+            <div class="shift" id="shift">
+            </div>
+        </div>
+    </main>
+
+    <label>Total wage per month:</label>
+    <input type="text" class="total" id="total">
+
+</div> -->
