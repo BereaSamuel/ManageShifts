@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "preserveSymlinks": true,
             "outputPath": "dist/manage-my-shift-andreea-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -91,6 +92,16 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Manage-My-Shift-Andreea-Angular:build:production",
+            "firebaseProject": "manageshifts-2277a",
+            "firebaseHostingSite": "manageshiftssa"
           }
         }
       }

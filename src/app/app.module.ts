@@ -7,6 +7,11 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
+import { environment } from '../environments/environment';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -22,7 +27,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ShiftsComponent } from './components/shifts/shifts.component';
-
 
 @NgModule({
   declarations: [
@@ -51,7 +55,10 @@ import { ShiftsComponent } from './components/shifts/shifts.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-center'
-    })
+    }),
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirestore(() => getFirestore()),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

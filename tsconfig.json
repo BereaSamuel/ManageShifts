@@ -18,6 +18,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    "skipLibCheck": true,
     "useDefineForClassFields": false,
     "lib": [
       "ES2022",
@@ -26,7 +27,7 @@
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
+    "strictInjectionParameters": false,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   }
