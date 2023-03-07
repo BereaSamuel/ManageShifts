@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "manageshifts-2277a": {
+      "hosting": {
+        "ManageShiftsProject": [
+          "manageshiftssa"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "manageshifts-2277a"
+  }
+}
