@@ -104,3 +104,4 @@ tsconfig.app.json
 tsconfig.json
 tsconfig.spec.json
 .firebaserc
+node_modules
