@@ -27,8 +27,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { ShiftsComponent } from './components/shifts/shifts.component';
-import { UserPageComponent } from './components/user-page/user-page.component';
-import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +36,7 @@ import { AdminPageComponent } from './components/admin-page/admin-page.component
     HomepageComponent,
     ResetPasswordComponent,
     EditProfileComponent,
-    ShiftsComponent,
-    UserPageComponent,
-    AdminPageComponent
+    ShiftsComponent
   ],
   imports: [
     FormsModule,
