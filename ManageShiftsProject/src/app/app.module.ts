@@ -7,22 +7,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { RegistrationPageComponent } from './components/user-page/registration-page/registration-page.component';
-import { LoginPageComponent } from './components/user-page/login-page/login-page.component';
-import { HomePageComponent } from './components/user-page/home-page/home-page.component';
-import { ResetPasswordPageComponent } from './components/user-page/reset-password-page/reset-password-page.component';
-import { EditProfileComponent } from './components/user-page/edit-profile/edit-profile.component';
-import { ShiftsComponent } from './components/user-page/shifts/shifts.component';
+
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { ResetPasswordPageComponent } from './components/reset-password-page/reset-password-page.component';
+import { HomePageAdminComponent } from './components/admin-page/home-page-admin/home-page-admin.component';
+import { HomePageUserComponent } from './components/user-page/home-page-user/home-page-user.component';
+import { ShiftsAdminComponent } from './components/admin-page/shifts-admin/shifts-admin.component';
+import { EditProfileAdminComponent } from './components/admin-page/edit-profile-admin/edit-profile-admin.component';
+import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
+import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationPageComponent,
     LoginPageComponent,
-    HomePageComponent,
     ResetPasswordPageComponent,
-    EditProfileComponent,
-    ShiftsComponent
+    HomePageAdminComponent,
+    HomePageUserComponent,
+    ShiftsAdminComponent,
+    EditProfileAdminComponent,
+    ShiftsUserComponent,
+    EditProfileUserComponent,
   ],
   imports: [
     BrowserModule,
