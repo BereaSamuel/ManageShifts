@@ -43,13 +43,13 @@ const routes: Routes = [
   },
   {
     path: 'shifts-admin',
-    component: ShiftsAdminComponent
+    component: ShiftsAdminComponent,
+    canActivate: [GuardGuard]
   },
 
   {
     path: 'home-page-user',
-    component: HomePageUserComponent,
-    canActivate: [GuardGuard]
+    component: HomePageUserComponent
   },
   {
     path: 'edit-profile-user',
