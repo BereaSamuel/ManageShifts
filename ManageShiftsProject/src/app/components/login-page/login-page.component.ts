@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
