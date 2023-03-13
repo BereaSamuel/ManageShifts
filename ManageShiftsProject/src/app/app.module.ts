@@ -24,12 +24,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
 
 import { ToastrModule } from 'ngx-toastr';
 
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     ShiftsAdminComponent,
     EditProfileAdminComponent,
     ShiftsUserComponent,
-    EditProfileUserComponent
+    EditProfileUserComponent,
+    EmployeesListComponent
   ],
   imports: [
     FormsModule,
@@ -54,6 +57,7 @@ import { AngularFireModule } from '@angular/fire/compat';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    MatTableModule,
 
     BrowserModule,
     AppRoutingModule,

@@ -12,6 +12,7 @@ import { ShiftsAdminComponent } from './components/admin-page/shifts-admin/shift
 import { HomePageUserComponent } from './components/user-page/home-page-user/home-page-user.component';
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
+import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
 import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'edit-profile-admin',
     component: EditProfileAdminComponent
+  },
+  {
+    path: 'employee-list',
+    component: EmployeesListComponent
   },
   {
     path: 'shifts-admin',
