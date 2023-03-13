@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
-import { Validators } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-registration-page',
@@ -10,9 +10,12 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./registration-page.component.css']
 })
 export class RegistrationPageComponent {
-  public userInfo!: FormGroup
+  public signupForm!: FormGroup
+  firebaseErrorMessage: string;
  
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private afAngular: AngularFireAuth){
+    this.firebaseErrorMessage = '';
+  }
  
   username: string = '';
   firstName: string = '';
@@ -27,7 +30,7 @@ export class RegistrationPageComponent {
   passwordPattern = '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,15}';
  
  ngOnInit(): void{
-   this.userInfo = this.formBuilder.group({
+   this.signupForm = this.formBuilder.group({
      username: ['', Validators.compose([Validators.required, Validators.pattern(this.usernamePattern)])],
      firstName:  ['', Validators.required],
      lastName:  ['',Validators.required],
@@ -59,8 +62,21 @@ export class RegistrationPageComponent {
      }
    }
  }
- 
- saveFormToLocalStorage(){
-   localStorage.setItem('userInfoLS', JSON.stringify(this.userInfo.value));
+
+ signup(){
+  if(this.signupForm.invalid){
+    return;
+  }
+
+  this.authService.signupUser(this.signupForm.value).then((result) =>{
+    if(result == null){
+      this.router.navigate(['/login-page']);
+    } else if(result.isValid == false){
+      this.firebaseErrorMessage = result.messaege;
+    }
+  }).catch(() => {
+
+  });
  }
+ 
 }

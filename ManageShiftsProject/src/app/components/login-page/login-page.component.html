@@ -1,21 +1,21 @@
-<form [name]="loginInfo" [formGroup]="loginInfo" class="login-form" (ngSubmit)="login()">
+<form [name]="loginForm" [formGroup]="loginForm" class="login-form" (ngSubmit)="loginUser()">
     <mat-card-header>
         <mat-card-title>LOGIN</mat-card-title>
     </mat-card-header>
     
     <mat-form-field>
-        <mat-label>Username</mat-label>
-        <input formControlName="usernameLogin" matInput>
-        <mat-error *ngIf="loginInfo.controls['usernameLogin'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput>
+        <mat-error *ngIf="loginForm.controls['email'].errors?.['required']">Field cannot be empty</mat-error>
     </mat-form-field>
     
     <mat-form-field>
         <mat-label>Password</mat-label>
-        <input  formControlName="passwordLogin" type="password" matInput>
-        <mat-error *ngIf="loginInfo.controls['passwordLogin'].errors?.['required']">Field cannot be empty</mat-error>
+        <input  formControlName="password" type="password" matInput>
+        <mat-error *ngIf="loginForm.controls['password'].errors?.['required']">Field cannot be empty</mat-error>
     </mat-form-field>
       
-    <a mat-raised-button color="primary" class="login-form__button" [disabled]="!loginInfo.valid" routerLink="/home-page-admin" (click)="login()"><span>LOGIN</span></a>
+    <a mat-raised-button color="primary" class="login-form__button" [disabled]="!loginForm.valid" (click)="loginUser()"><span>LOGIN</span></a>
 
 </form>
 
