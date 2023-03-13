@@ -1,1 +1,16 @@
-<p>home-page-user works!</p>
+<mat-toolbar class="navigation-bar" (ngSubmit)="ngOnInit()">
+  <mat-icon class="navigation-bar__logo">
+    <img src="../assets/LOGO-white.png" alt="logo" width="70vw" />
+  </mat-icon>
+
+  <span
+    >HELLO,
+    <input type="text" matInput [(ngModel)]="helloUser" style="color: black"
+  /></span>
+
+  <a mat-button routerLink="/shifts-user">MY SHIFT</a>
+
+  <a mat-button routerLink="/edit-profile">EDIT PROFILE</a>
+
+  <a mat-button routerLink="/login">LOG OUT</a>
+</mat-toolbar>

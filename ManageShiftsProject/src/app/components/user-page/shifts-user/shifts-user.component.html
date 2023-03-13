@@ -1,1 +1,50 @@
-<p>shifts-user works!</p>
+<form [formGroup]="myFormShift">
+  Value:{{ myFormShift.value | json }}
+  <hr />
+  <mat-form-field>
+    <input matInput placeholder="nume" formControlName="nume" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="prenume" formControlName="prenume" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="date" formControlName="date" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="time" formControlName="time" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="shift place" formControlName="shift" />
+  </mat-form-field>
+  <div formArrayName="shift">
+    <div
+      *ngFor="let shift of _shift.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-form-field>
+        <input matInput placeholder=" Date Work" formControlName="datework" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Time Work" formControlName="timework" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder=" Name Work" formControlName="namework" />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder=" LastName Work"
+          formControlName="lastwork"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder=" Shift Work" formControlName="shiftwork" />
+      </mat-form-field>
+      <button mat-raised-button color="warn" (click)="deletShift(i)">
+        Delete
+      </button>
+      <button mat-raised-button color="warn" (click)="edit()">Edit</button>
+    </div>
+  </div>
+  <button mat-raised-button color="warn" (click)="addShift()">Add shift</button>
+</form>
