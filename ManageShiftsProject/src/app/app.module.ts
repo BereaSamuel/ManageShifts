@@ -5,11 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
 
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
@@ -30,6 +26,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
 import { ToastrModule } from 'ngx-toastr';
+
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -58,9 +58,13 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     ToastrModule.forRoot({
       positionClass: 'toast-top-center'
-    })
+    }),
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

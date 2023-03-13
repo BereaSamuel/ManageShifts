@@ -12,7 +12,7 @@ import { ShiftsAdminComponent } from './components/admin-page/shifts-admin/shift
 import { HomePageUserComponent } from './components/user-page/home-page-user/home-page-user.component';
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
-import { GuardGuard } from './guard/guard.guard';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'home-page-admin',
     component: HomePageAdminComponent,
-    canActivate: [GuardGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-profile-admin',
