@@ -17,7 +17,7 @@ import { GuardGuard } from './guard/guard.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home-page-user',
+    redirectTo: 'registration-page',
     pathMatch: 'full'
   },
   {
@@ -35,7 +35,8 @@ const routes: Routes = [
 
   {
     path: 'home-page-admin',
-    component: HomePageAdminComponent
+    component: HomePageAdminComponent,
+    canActivate: [GuardGuard]
   },
   {
     path: 'edit-profile-admin',
@@ -44,7 +45,6 @@ const routes: Routes = [
   {
     path: 'shifts-admin',
     component: ShiftsAdminComponent,
-    canActivate: [GuardGuard]
   },
 
   {
@@ -62,7 +62,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    component: HomePageUserComponent
+    component: RegistrationPageComponent
   }
 ];
 
