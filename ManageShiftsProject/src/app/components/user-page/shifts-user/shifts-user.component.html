@@ -1,44 +1,44 @@
 <form [formGroup]="myFormShift">
-  Value:{{ myFormShift.value | json }}
-  <hr />
   <mat-form-field>
-    <input matInput placeholder="nume" formControlName="nume" />
+    <input matInput placeholder="Date" formControlName="date" />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="prenume" formControlName="prenume" />
+    <input matInput placeholder="Start time" formControlName="start" />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="date" formControlName="date" />
+    <input matInput placeholder="End time" formControlName="end" />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="time" formControlName="time" />
+    <input matInput placeholder="Hourly wage" formControlName="wage" />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="shift place" formControlName="shift" />
+    <input matInput placeholder="Shift place" formControlName="shift" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Comments" formControlName="comment" />
   </mat-form-field>
   <div formArrayName="shift">
     <div
-      *ngFor="let shift of _shift.controls; let i = index"
+      *ngFor="let shift of shifts.controls; let i = index"
       [formGroupName]="i"
     >
       <mat-form-field>
-        <input matInput placeholder=" Date Work" formControlName="datework" />
+        <input matInput placeholder="Date" formControlName="date" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Time Work" formControlName="timework" />
+        <input matInput placeholder="Start time" formControlName="start" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder=" Name Work" formControlName="namework" />
+        <input matInput placeholder="End time" formControlName="end" />
       </mat-form-field>
       <mat-form-field>
-        <input
-          matInput
-          placeholder=" LastName Work"
-          formControlName="lastwork"
-        />
+        <input matInput placeholder="Hourly wage" formControlName="wage" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder=" Shift Work" formControlName="shiftwork" />
+        <input matInput placeholder="Shift place" formControlName="place" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Comments" formControlName="comment" />
       </mat-form-field>
       <button mat-raised-button color="warn" (click)="deletShift(i)">
         Delete

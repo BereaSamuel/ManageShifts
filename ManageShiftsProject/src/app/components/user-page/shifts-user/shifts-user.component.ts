@@ -16,31 +16,33 @@ export class ShiftsUserComponent implements OnInit {
       .collection('ManageShiftsUserData')
       .valueChanges();
   }
-  ngOnInit(): void {
+  ngOnInit() {
     this.myFormShift = this.fb.group({
       date: '',
-      time: '',
-      prenume: '',
-      nume: '',
-      shift: this.fb.array([]),
+      start: '',
+      end: '',
+      wage: '',
+      comment: '',
+      shift: '',
     });
   }
-  get _shift() {
+  get shifts() {
     return this.myFormShift.get('shift') as FormArray;
   }
 
   addShift() {
     const shifts = this.fb.group({
-      datework: '',
-      timework: '',
-      namework: '',
-      lastwork: '',
-      shiftwork: '',
+      date: '',
+      start: '',
+      end: '',
+      wage: '',
+      comment: '',
+      place: '',
     });
-    this._shift.push(shifts);
+    this.shifts.push(shifts);
   }
   deletShift(i) {
-    this._shift.removeAt(i);
+    this.shifts.removeAt(i);
   }
   edit() {}
 }
