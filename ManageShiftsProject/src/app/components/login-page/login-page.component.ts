@@ -16,7 +16,8 @@ export class LoginPageComponent {
   constructor(private router: Router, private authService: AuthService, private afAuth: AngularFireAuth){
     this.loginForm = new FormGroup({
       'email': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.required)
+      'password': new FormControl('', Validators.required),
+      'admin': new FormControl('')
     });
     this.firebaseErrorMessage = '';
   }
@@ -27,14 +28,14 @@ export class LoginPageComponent {
     }
 
     this.authService.loginUser(this.loginForm.value.email, this.loginForm.value.password).then((result) =>{
-      if(result == null){
-        alert('logging in...');
-        this.router.navigate(['/home-page-admin']);
-      } else if(result.isValid == false){
-        console.log('login error', result);
-        alert('login error')
-        this.firebaseErrorMessage = result.message;
-      }
-    })
+        if(result == null){
+          alert('logging in...');
+        } else if(result == false){
+          console.log('login error', result);
+          alert('login error');
+          this.firebaseErrorMessage = result.message;
+        }
+      })
   }
 }
+

@@ -19,7 +19,9 @@ export class EmployeesListComponent implements OnInit{
     email: '',
     age: '',
     password: '',
-    confirm_password: ''
+    confirm_password: '',
+    userLoggedIn: '',
+    admin: ''
   };
 
   id: string = '';
@@ -28,6 +30,7 @@ export class EmployeesListComponent implements OnInit{
   last_name: string = '';
   age: string = '';
   email: string = '';
+  admin: boolean;
 
   constructor(private auth: AuthService, private data: DataService){}
 
