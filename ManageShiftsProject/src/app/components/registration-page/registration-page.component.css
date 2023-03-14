@@ -1,3 +1,4 @@
+
 .registration-form {
   background-color: black;
   border-radius: 1rem;
@@ -25,4 +26,38 @@ p {
 
 .have-account {
   text-align: center;
+
+.registration-form{
+    background-color: black;
+    border-radius: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: fit-content;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+    width: 30vw;
+}
+
+p{
+    font-size: 12px;
+}
+
+.registration-form__button{
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    color: white;
+    font-size: larger;
+}
+
+mat-form-field{
+    height: 8vh;
+    font-size: 14px;
+}
+
+.have-account{
+    text-align: center;
+
 }

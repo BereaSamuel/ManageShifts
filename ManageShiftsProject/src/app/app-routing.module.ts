@@ -12,12 +12,13 @@ import { ShiftsAdminComponent } from './components/admin-page/shifts-admin/shift
 import { HomePageUserComponent } from './components/user-page/home-page-user/home-page-user.component';
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
-import { GuardGuard } from './guard/guard.guard';
+import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home-page-user',
+    redirectTo: 'registration-page',
     pathMatch: 'full'
   },
   {
@@ -35,16 +36,20 @@ const routes: Routes = [
 
   {
     path: 'home-page-admin',
-    component: HomePageAdminComponent
+    component: HomePageAdminComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-profile-admin',
     component: EditProfileAdminComponent
   },
   {
+    path: 'employee-list',
+    component: EmployeesListComponent
+  },
+  {
     path: 'shifts-admin',
     component: ShiftsAdminComponent,
-    canActivate: [GuardGuard]
   },
 
   {
@@ -62,7 +67,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    component: HomePageUserComponent
+    component: RegistrationPageComponent
   }
 ];
 

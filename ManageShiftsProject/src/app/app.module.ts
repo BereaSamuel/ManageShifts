@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
@@ -28,8 +30,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
+import { ToastrModule } from 'ngx-toastr';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
+
 
 @NgModule({
   declarations: [
@@ -43,11 +53,24 @@ import { HttpClientModule } from '@angular/common/http';
     EditProfileAdminComponent,
     ShiftsUserComponent,
     EditProfileUserComponent,
+    EmployeesListComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTableModule,
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
@@ -67,6 +90,15 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     provideFirestore(() => getFirestore()),
     AngularFirestoreModule,
+
+
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center'
+    }),
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

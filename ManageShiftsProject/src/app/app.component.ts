@@ -1,4 +1,8 @@
+
 import { Component, OnInit } from '@angular/core';
+
+import { Component } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -8,9 +12,20 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
   constructor(private route: Router, private toast: ToastrService) {}
 
   ngOnInit(): void {
     this.route.navigate(['../home-page-user.html']);
+
+
+  constructor(
+    private route: Router,
+    private toast: ToastrService
+  ){}
+
+  ngOnInit(): void {
+    this.route.navigate(['../registration-page']);
+
   }
 }

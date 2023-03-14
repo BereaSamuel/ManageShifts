@@ -1,1 +1,58 @@
-<p>edit-profile-admin works!</p>
+<app-home-page-admin></app-home-page-admin>
+<form [formGroup]="userInfoEdit" class="edit-profile-form" (ngSubmit)="ngOnInit()">
+    <mat-card>
+        <mat-card-header>EDIT PROFILE</mat-card-header>
+    </mat-card>
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input formControlName="usernameEdit" matInput type="text" placeholder="Username">
+        <mat-error *ngIf="userInfoEdit.controls['usernameEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['usernameEdit'].errors?.['pattern']">Must have at least 6 characters. Use letters, numbers, special character.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input formControlName="firstNameEdit" matInput type="text" placeholder="First name" minlength="2">
+        <mat-error *ngIf="userInfoEdit.controls['firstNameEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['firstNameEdit'].errors?.['minlength']">First name must have at least 2 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input formControlName="lastNameEdit" matInput type="text" placeholder="Last name" minlength="2">
+        <mat-error *ngIf="userInfoEdit.controls['lastNameEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['lastNameEdit'].errors?.['minlength']">Last name must have at least 2 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input formControlName="ageEdit" matInput type="number" placeholder="Age">
+        <mat-error *ngIf="userInfoEdit.controls['ageEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['ageEdit'].errors?.['min'] || userInfoEdit.controls['ageEdit'].errors?.['max']">You don't fit within the age limit</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input formControlName="emailEdit" matInput type="email" placeholder="Email">
+        <mat-error *ngIf="userInfoEdit.controls['emailEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['emailEdit'].errors?.['email']">Invalid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input formControlName="passwordEdit" matInput type="password" placeholder="Password">
+        <mat-error *ngIf="userInfoEdit.controls['passwordEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['passwordEdit'].errors?.['pattern']">Must have at least 6 characters. Use letters, numbers, special character.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Confirm password</mat-label>
+        <input formControlName="confirmPasswordEdit" matInput type="password" placeholder="Confirm Password">
+        <mat-error *ngIf="userInfoEdit.controls['confirmPasswordEdit'].errors?.['required']">Field cannot be empty</mat-error>
+        <mat-error *ngIf="userInfoEdit.controls['confirmPasswordEdit'].errors?.['mustMatch']">Confirmation password must be the same as password</mat-error>
+    </mat-form-field>
+
+    <a mat-raised-button color="primary" class="edit-profile-form__button" [disabled]="!userInfoEdit.valid" (click)="ngOnInit()"><span>UPDATE</span></a> 
+
+</form>
