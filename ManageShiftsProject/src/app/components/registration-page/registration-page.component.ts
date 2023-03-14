@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
+
 @Component({
   selector: 'app-registration-page',
   templateUrl: './registration-page.component.html',
-  styleUrls: ['./registration-page.component.css']
+  styleUrls: ['./registration-page.component.css'],
 })
 export class RegistrationPageComponent {
+
+  
   public signupForm!: FormGroup
   firebaseErrorMessage: string;
  
@@ -80,3 +84,4 @@ export class RegistrationPageComponent {
  }
  
 }
+
