@@ -1,7 +1,8 @@
+import { NgIf } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Validators } from '@angular/forms';
+import { NgModel, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -10,9 +11,12 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   userLoggedIn: boolean;
+  admin: boolean;
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {
     this.userLoggedIn = false;
+
+    this.admin = false;
 
     this.afAuth.onAuthStateChanged((user) => {
       if(user){
@@ -21,6 +25,16 @@ export class AuthService {
         this.userLoggedIn = false;
       }
     })
+
+    // this.afAuth.onAuthStateChanged((user) => {
+
+    //   if(user && user.email.includes("admin")){
+    //     this.admin = true;
+    //   } else{
+    //     this.admin = false;
+    //   }
+    //   console.log(this.admin, user.email)
+    // })
   }
 
   signupUser(user: any): Promise<any> {
@@ -44,6 +58,17 @@ export class AuthService {
     return this.afAuth.signInWithEmailAndPassword(email, password)
     .then(() => {
       console.log('Auth Service: loginUser: success');
+      this.afAuth.onAuthStateChanged((user) => {
+
+        if(user && user.email.includes("admin")){
+          this.admin = true;
+          this.router.navigate(['/home-page-admin'])
+        } else{
+          this.admin = false;
+          this.router.navigate(['/home-page-user'])
+        }
+      })
+
     })
     .catch(error => {
       console.log('Auth Service:login error...');

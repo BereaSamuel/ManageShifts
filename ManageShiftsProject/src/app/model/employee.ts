@@ -6,5 +6,7 @@ export interface Employee {
     age: string,
     email: string,
     password: string,
-    confirm_password: string
+    confirm_password: string,
+    userLoggedIn: string,
+    admin: string
 }
