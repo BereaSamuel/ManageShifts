@@ -1,74 +1,78 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from 'src/app/model/employee';
+import { User } from 'src/app/model/users';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-employees-list',
   templateUrl: './employees-list.component.html',
-  styleUrls: ['./employees-list.component.css']
+  styleUrls: ['./employees-list.component.css'],
 })
-export class EmployeesListComponent implements OnInit{
-  employeesList: Employee[] = [];
+export class EmployeesListComponent implements OnInit {
+  employeesList: User[] = [];
 
-  employeeObject: Employee = {
+  employeeObject: User = {
     id: '',
     username: '',
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     age: '',
     password: '',
-    confirm_password: '',
+    confirmPassword: '',
     userLoggedIn: '',
-    admin: ''
+    admin: '',
   };
 
-  id: string = '';
   username: string = '';
-  first_name: string = '';
-  last_name: string = '';
+  firstName: string = '';
+  lastName: string = '';
   age: string = '';
   email: string = '';
   admin: boolean;
 
-  constructor(private auth: AuthService, private data: DataService){}
+  constructor(private auth: AuthService, private data: DataService) {}
 
   ngOnInit(): void {
     this.getAllEmployees();
   }
 
-  getAllEmployees(){
-    this.data.getAllEmployees().subscribe(result => {
-      this.employeesList = result.map((e: any)=>{
+  getAllEmployees() {
+    this.data.getAllEmployees().subscribe((result) => {
+      this.employeesList = result.map((e: any) => {
         const data = e.payload.doc.data();
         data.id = e.payload.doc.id;
         return data;
-      })
-    }), error => {
-      alert('Error while fetching employee data');
-    }
+      });
+    }),
+      (error) => {
+        alert('Error while fetching employee data');
+      };
   }
 
-  resetForm(){
-    this.id = '';
+  resetForm() {
     this.username = '';
-    this.first_name = '';
-    this.last_name = '';
+    this.firstName = '';
+    this.lastName = '';
     this.email = '';
     this.age = '';
   }
 
-  addEmployee(){
-    if(this.username == '' || this.first_name == '' || this.last_name == '' || this.age == '' || this.email == ''){
+  addEmployee() {
+    if (
+      this.username == '' ||
+      this.firstName == '' ||
+      this.lastName == '' ||
+      this.age == '' ||
+      this.email == ''
+    ) {
       alert('Fill all input fields');
       return;
     }
 
-    this.employeeObject.id = '';
     this.employeeObject.username = this.username;
-    this.employeeObject.first_name = this.first_name;
-    this.employeeObject.last_name = this.last_name;
+    this.employeeObject.firstName = this.firstName;
+    this.employeeObject.lastName = this.lastName;
     this.employeeObject.email = this.email;
 
     this.data.addEmployee(this.employeeObject);
@@ -76,12 +80,16 @@ export class EmployeesListComponent implements OnInit{
     this.resetForm();
   }
 
-  updateEmployee(){
-
-  }
-
-  deleteEmployee(employee: Employee){
-    if(window.confirm('Are you sure you want to delete'+employee.first_name+''+employee.last_name+'?'))
-    this.data.deleteEmployee(employee);
+  deleteEmployee(employee: User) {
+    if (
+      window.confirm(
+        'Are you sure you want to delete' +
+          employee.firstName +
+          '' +
+          employee.lastName +
+          '?'
+      )
+    )
+      this.data.deleteEmployee(employee);
   }
 }

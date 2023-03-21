@@ -1,1 +1,127 @@
-<p>shifts-user works!</p>
+<!-- <form [formGroup]="myFormShift">
+  <mat-form-field>
+    <input matInput placeholder="Date" formControlName="date" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Start time" formControlName="start" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="End time" formControlName="end" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Hourly wage" formControlName="wage" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Shift place" formControlName="shift" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Comments" formControlName="comment" />
+  </mat-form-field>
+  <div formArrayName="shift">
+    <div
+      *ngFor="let shift of shifts.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-form-field>
+        <input matInput placeholder="Date" formControlName="date" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Start time" formControlName="start" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="End time" formControlName="end" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Hourly wage" formControlName="wage" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Shift place" formControlName="place" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Comments" formControlName="comment" />
+      </mat-form-field>
+      <button mat-raised-button color="warn" (click)="deletShift(i)">
+        Delete
+      </button>
+      <button mat-raised-button color="warn" (click)="edit()">Edit</button>
+    </div>
+  </div>
+  <button mat-raised-button color="warn" (click)="addShift()">Add shift</button>
+</form> -->
+<div>
+  <form>
+    <input
+      type="date"
+      class="form-control"
+      id="date"
+      name="date"
+      [(ngModel)]="date"
+      placeholder="date"
+    />
+    <input
+      type="time"
+      class="form-control"
+      id="startTime"
+      name="startTime"
+      [(ngModel)]="startTime"
+      placeholder="Start Time"
+    />
+    <input
+      type="time"
+      class="form-control"
+      id="endTime"
+      name="endTime"
+      [(ngModel)]="endTime"
+      placeholder="End Time"
+    />
+    <input
+      type="text"
+      class="form-control"
+      id="wage"
+      name="wage"
+      [(ngModel)]="wage"
+      placeholder="Hourly wage"
+    />
+    <input
+      type="text"
+      class="form-control"
+      id="shiftPlace"
+      name="shiftPlace"
+      [(ngModel)]="shiftPlace"
+      placeholder="Shift Place"
+    />
+    <input
+      type="text"
+      class="form-control"
+      id="comment"
+      name="comment"
+      [(ngModel)]="comment"
+      placeholder="Comment"
+    />
+    <button class="shiftList" (click)="addShift()">Add Shift</button>
+  </form>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <th scope="col">Wage</th>
+          <th scope="col">Shift Place</th>
+          <th scope="col">Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let shift of shiftsList">
+          <td>{{ shift.date }}</td>
+          <td>{{ shift.startTime }}</td>
+          <td>{{ shift.endTime }}</td>
+          <td>{{ shift.wage }}</td>
+          <td>{{ shift.shiftPlace }}</td>
+          <td>{{ shift.comment }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
