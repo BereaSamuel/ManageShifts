@@ -13,39 +13,39 @@ import { HomePageUserComponent } from './components/user-page/home-page-user/hom
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
 import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
-import { AuthGuard } from './services/auth.guard';
+import { GuardGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'registration-page',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'registration-page',
-    component: RegistrationPageComponent
+    component: RegistrationPageComponent,
   },
   {
     path: 'login-page',
-    component: LoginPageComponent
+    component: LoginPageComponent,
   },
   {
     path: 'reset-password-page',
-    component: ResetPasswordPageComponent
+    component: ResetPasswordPageComponent,
   },
 
   {
     path: 'home-page-admin',
     component: HomePageAdminComponent,
-    canActivate: [AuthGuard]
+    canActivate: [GuardGuard],
   },
   {
     path: 'edit-profile-admin',
-    component: EditProfileAdminComponent
+    component: EditProfileAdminComponent,
   },
   {
     path: 'employee-list',
-    component: EmployeesListComponent
+    component: EmployeesListComponent,
   },
   {
     path: 'shifts-admin',
@@ -54,25 +54,25 @@ const routes: Routes = [
 
   {
     path: 'home-page-user',
-    component: HomePageUserComponent
+    component: HomePageUserComponent,
   },
   {
     path: 'edit-profile-user',
-    component: EditProfileUserComponent
+    component: EditProfileUserComponent,
   },
   {
     path: 'shifts-user',
-    component: ShiftsUserComponent
+    component: ShiftsUserComponent,
   },
 
   {
     path: '**',
-    component: RegistrationPageComponent
-  }
+    component: RegistrationPageComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

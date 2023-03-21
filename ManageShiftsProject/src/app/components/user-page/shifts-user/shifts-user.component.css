@@ -1,0 +1,18 @@
+input {
+  color: black;
+}
+button {
+  color: blue;
+}
+table,
+thead,
+tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+tr {
+  display: flex;
+  gap: 1rem;
+}
