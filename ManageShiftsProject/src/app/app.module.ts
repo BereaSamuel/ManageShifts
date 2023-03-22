@@ -9,7 +9,6 @@ import { LoginPageComponent } from './components/login-page/login-page.component
 import { ResetPasswordPageComponent } from './components/reset-password-page/reset-password-page.component';
 import { HomePageAdminComponent } from './components/admin-page/home-page-admin/home-page-admin.component';
 import { HomePageUserComponent } from './components/user-page/home-page-user/home-page-user.component';
-import { ShiftsAdminComponent } from './components/admin-page/shifts-admin/shifts-admin.component';
 import { EditProfileAdminComponent } from './components/admin-page/edit-profile-admin/edit-profile-admin.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
@@ -26,6 +25,8 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
+import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
+import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
 
 @NgModule({
   declarations: [
@@ -35,11 +36,12 @@ import { EmployeesListComponent } from './components/admin-page/employees-list/e
     ResetPasswordPageComponent,
     HomePageAdminComponent,
     HomePageUserComponent,
-    ShiftsAdminComponent,
     EditProfileAdminComponent,
     ShiftsUserComponent,
     EditProfileUserComponent,
     EmployeesListComponent,
+    AllShiftsPageComponent,
+    AllWorkersPageComponent,
   ],
   imports: [
     FormsModule,

@@ -31,7 +31,7 @@ export class RegistrationPageComponent implements OnInit {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
-  loggedOn: string = '';
+  userLoggedIn: boolean;
 
   usernamePattern =
     '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{6,15}';
@@ -67,7 +67,7 @@ export class RegistrationPageComponent implements OnInit {
           ]),
         ],
         confirmPassword: ['', Validators.required],
-        loggedOn: [''],
+        userLoggedIn: [''],
       },
       {
         validators: this.mustMatch('password', 'confirmPassword'),
@@ -108,13 +108,14 @@ export class RegistrationPageComponent implements OnInit {
               'users',
               this.signupForm.value.username,
               this.signupForm.value.email,
-              true,
+              false,
               this.signupForm.value.password,
               this.signupForm.value.firstName,
               this.signupForm.value.lastName,
               this.signupForm.value.age,
-              this.signupForm.value.confirmPassword
-            );
+              this.signupForm.value.confirmPassword,
+              true
+              );
           });
           this.router.navigate(['/login-page']);
         } else if (result.isValid == false) {
