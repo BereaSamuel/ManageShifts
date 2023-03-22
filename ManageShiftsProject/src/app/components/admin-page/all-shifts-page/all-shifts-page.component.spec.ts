@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ShiftsAdminComponent } from './shifts-admin.component';
+import { AllShiftsPageComponent } from './all-shifts-page.component';
 
-describe('ShiftsAdminComponent', () => {
-  let component: ShiftsAdminComponent;
-  let fixture: ComponentFixture<ShiftsAdminComponent>;
+describe('AllShiftsPageComponent', () => {
+  let component: AllShiftsPageComponent;
+  let fixture: ComponentFixture<AllShiftsPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ShiftsAdminComponent ]
+      declarations: [ AllShiftsPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ShiftsAdminComponent);
+    fixture = TestBed.createComponent(AllShiftsPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

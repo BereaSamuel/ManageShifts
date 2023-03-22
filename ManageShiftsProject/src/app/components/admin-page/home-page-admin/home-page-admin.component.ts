@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { User } from 'src/app/model/users';
+import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home-page-admin',
@@ -6,19 +10,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page-admin.component.css']
 })
 export class HomePageAdminComponent {
-  stored!: any
-
   helloUser: string = '';
 
-  
+  constructor(private afs: AngularFirestore, private auth: AuthService, private data: DataService){}
 
-  ngOnInit(): void{
-    this.stored = localStorage.getItem('userInfoLS');
-    this.stored = JSON.parse(this.stored);
-  
-    if(this.stored){
-      this.helloUser = this.stored.username;
-    }
+    ngOnInit(): void{
+      this.auth.getCurentUser().then((res) => {
+        this.data.retriveUser(res).then((res) => {
+          this.helloUser = res.username;
+        })
+      })
+}
 
-  }
+
 }

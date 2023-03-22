@@ -18,7 +18,8 @@ export class DataService {
     firstName: string,
     lastName: string,
     age: string,
-    confirmPassword: string
+    confirmPassword: string,
+    userLoggedIn: boolean
   ) {
     this.firestore.collection(dbName).doc(id).set({
       password: password,
@@ -29,6 +30,7 @@ export class DataService {
       lastName: lastName,
       age: age,
       confirmPassword: confirmPassword,
+      userLoggedIn: userLoggedIn
     });
   }
   constructor(private firestore: AngularFirestore, private auth: AuthService) {}

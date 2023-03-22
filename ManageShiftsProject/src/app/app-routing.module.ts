@@ -7,13 +7,13 @@ import { ResetPasswordPageComponent } from './components/reset-password-page/res
 
 import { HomePageAdminComponent } from './components/admin-page/home-page-admin/home-page-admin.component';
 import { EditProfileAdminComponent } from './components/admin-page/edit-profile-admin/edit-profile-admin.component';
-import { ShiftsAdminComponent } from './components/admin-page/shifts-admin/shifts-admin.component';
+import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
+import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
 
 import { HomePageUserComponent } from './components/user-page/home-page-user/home-page-user.component';
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
-import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
-import { GuardGuard } from './services/auth.guard';
+import { GuardGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -44,12 +44,12 @@ const routes: Routes = [
     component: EditProfileAdminComponent,
   },
   {
-    path: 'employee-list',
-    component: EmployeesListComponent,
+    path: 'all-shifts-page',
+    component: AllShiftsPageComponent
   },
   {
-    path: 'shifts-admin',
-    component: ShiftsAdminComponent,
+    path: 'all-workers-page',
+    component: AllWorkersPageComponent
   },
 
   {
