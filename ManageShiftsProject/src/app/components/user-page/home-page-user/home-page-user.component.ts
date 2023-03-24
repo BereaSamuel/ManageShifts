@@ -12,21 +12,13 @@ export class HomePageUserComponent implements OnInit {
   stored!: any;
 
   helloUser: string = '';
-  constructor(private auth: AuthService, private data: DataService) {}
-  shiftsList: Shift[] = [];
-  ngOnInit(): void {
-    this.auth.getCurentUser().then((res) => {
-      this.data
-        .getShiftUserId(res)
-        .snapshotChanges()
-        .subscribe((res) => {
-          this.shiftsList = res.map((e: any) => {
-            const data = e.payload.doc.data();
-            data.id = e.payload.doc.id;
+  constructor( private auth: AuthService, private data: DataService){}
 
-            return data;
-          });
-        });
-    });
-  }
+    ngOnInit(): void{
+      this.auth.getCurentUser().then((res) => {
+        this.data.retriveUser(res).then((res) => {
+          this.helloUser = res.username;
+        })
+      })
+}
 }
