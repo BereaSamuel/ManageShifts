@@ -14,22 +14,21 @@ export class AllShiftsPageComponent {
   shifts: Shift[] = [];
 
   ngOnInit(): void {
-    // this.data.getAllShifts().subscribe((data) => {
-    //   this.shifts = data.map((e) => {
-    //     return {
-    //       id: e.payload.doc.id,
-    //       ...(e.payload.doc.data() as Shift),
-    //     };
-    //   });
-    // });
+    this.getAllShifts();
 }
 
-  // deleteShift(shiftId: string) {
-  //   this.data.deleteShift(shiftId).then(() => {
-  //     console.log('Shift deleted successfully!');
-  //     console.log(shiftId)
-  //   }).catch((error) => {
-  //     console.log('Error deleting shift:', error);
-  //   });
-  // }
+getAllShifts() {
+  this.data.getAllShifts().subscribe((shifts: Shift[]) => {
+    this.shifts = shifts;
+  });
+}
+
+  deleteShift(shiftId: string) {
+    this.data.deleteShift(shiftId).then(() => {
+      console.log('Shift deleted successfully!');
+      console.log(shiftId)
+    }).catch((error) => {
+      console.log('Error deleting shift:', error);
+    });
+  }
 }

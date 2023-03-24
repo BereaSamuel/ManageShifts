@@ -51,23 +51,24 @@ export class DataService {
   addShift(shifts: Shift) {
   // Generate a random ID for the new shift
   const shiftId = this.firestore.createId();
-  console.log(shiftId)
-
+ 
   // Set the ID of the shift object to the new ID
   shifts.id = shiftId;
 
   // Add the shift to the Firestore collection using the new ID
   return this.firestore.collection('/Shifts').doc(shiftId).set(shifts);
   }
+
+  getAllShiftsByUserId(userId: string) {
+    return this.firestore
+      .collection('/Shifts', (ref) =>
+        ref.where('userId', '==', userId)
+      )
+      .valueChanges({ idField: 'id' });
+  }
   
   getAllShifts() {
     return this.firestore.collection('/Shifts').valueChanges();
-  }
-
-  getShiftUser(userId) {
-    return this.firestore.collection('/Shifts', (ref) =>
-      ref.where('id', '==', userId)
-    );
   }
 
   //add user
