@@ -54,6 +54,8 @@ export class AuthService {
       .then(() => {
         console.log('Auth Service: loginUser: success');
         this.afAuth.onAuthStateChanged((user) => {
+          localStorage.setItem('userUID', user.uid);
+
           if (user && user.email.includes('admin')) {
             this.admin = true;
             this.router.navigate(['/home-page-admin']);
@@ -85,12 +87,9 @@ export class AuthService {
   async getCurentUser(): Promise<string> {
     let uid: any;
     
-
     await this.afAuth.currentUser.then((res) => {
       if (res) {
         uid = res.uid;
-        localStorage.setItem('userUID', uid);
-        console.log(uid)
       } else {
         uid = '';
       }

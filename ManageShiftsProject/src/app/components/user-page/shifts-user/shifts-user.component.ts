@@ -39,7 +39,7 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
     ngOnInit() {
       this.userId = localStorage.getItem('userUID');
 
-      this.getAllShifts();
+      this.getUserShifts();
     }
 
     ngAfterContentInit(): void {}
@@ -86,8 +86,8 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
       this.comment = '';
     }
 
-    getAllShifts() {
-      this.data.getAllShifts().subscribe((shifts: Shift[]) => {
+    getUserShifts() {
+      this.data.getAllShiftsByUserId(this.userId).subscribe((shifts: Shift[]) => {
         this.shiftsList = shifts;
       });
     }

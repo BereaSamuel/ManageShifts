@@ -59,6 +59,13 @@ export class DataService {
   return this.firestore.collection('/Shifts').doc(shiftId).set(shifts);
   }
 
+  getAllShiftsByUserId(userId: string) {
+    return this.firestore
+      .collection('/Shifts', (ref) =>
+        ref.where('userId', '==', userId)
+      )
+      .valueChanges({ idField: 'id' });
+  }
   
   getAllShifts() {
     return this.firestore.collection('/Shifts').valueChanges();
