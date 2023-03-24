@@ -15,10 +15,10 @@ export class HomePageUserComponent implements OnInit {
   constructor( private auth: AuthService, private data: DataService){}
 
     ngOnInit(): void{
-      this.auth.getCurentUser().then((res) => {
-        this.data.retriveUser(res).then((res) => {
-          this.helloUser = res.username;
-        })
-      })
+      // this.auth.getCurentUser().then((res) => {
+      //   this.data.retriveUser(res).then((res) => {
+      //     this.helloUser = res.username;
+      //   })
+      // })
 }
 }

@@ -14,15 +14,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let shift of shifts">
-        <td>{{ shift.firstName }}</td>
-        <td>{{ shift.lastName }}</td>
+        <td>{{ shift.firstName + ' ' + shift.lastName }}</td>
         <td>{{ shift.date }}</td>
         <td>{{ shift.startTime }}</td>
         <td>{{ shift.endTime }}</td>
         <td>{{ shift.shiftPlace }}</td>
         <td>{{ shift.wage }}</td>
         <td>{{ shift.comment }}</td>
-        <td><button (click)="deleteShift(shift.id)">Delete</button></td>
+        <!-- <td><button (click)="deleteShift(shift.id)">Delete</button></td> -->
       </tr>
     </tbody>
   </table>

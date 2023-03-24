@@ -41,7 +41,6 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
     ngAfterContentInit(): void {}
 
     addShift() {
-      this.getAllShifts();
       if (
         this.date == '' ||
         this.startTime == '' ||
@@ -57,27 +56,21 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
       this.auth.getCurentUser().then((res) => {
         this.data.retriveUser(res).then((res) => {
           this.userShiftObj.firstName = res.firstName;
-        })
-      });
-      
-      this.auth.getCurentUser().then((res) => {
-        this.data.retriveUser(res).then((res) => {
           this.userShiftObj.lastName = res.lastName;
+          this.userShiftObj.id = this.id;
+          this.userShiftObj.date = this.date;
+          this.userShiftObj.startTime = this.startTime;
+          this.userShiftObj.endTime = this.endTime;
+          this.userShiftObj.wage = this.wage;
+          this.userShiftObj.shiftPlace = this.shiftPlace;
+          this.userShiftObj.comment = this.comment;
+
+          this.data.addShift(this.userShiftObj);
+
+          this.resetForm();
         })
       });
-
-      this.userShiftObj.id = this.id;
-      this.userShiftObj.date = this.date;
-      this.userShiftObj.startTime = this.startTime;
-      this.userShiftObj.endTime = this.endTime;
-      this.userShiftObj.wage = this.wage;
-      this.userShiftObj.shiftPlace = this.shiftPlace;
-      this.userShiftObj.comment = this.comment;
-
-      this.data.addShift(this.userShiftObj);
-
-      this.resetForm();
-    }
+          }
 
     resetForm() {
       this.date = '';
@@ -89,17 +82,8 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
     }
 
     getAllShifts() {
-      this.auth.getCurentUser().then((res) => {
-        this.data
-          .getShiftUserId(res)
-          .snapshotChanges()
-          .subscribe((res) => {
-            this.shiftsList = res.map((e: any) => {
-              const data = e.payload.doc.data();
-              data.id = e.payload.doc.id;
-              return data;
-            });
-          });
+      this.data.getAllShifts().subscribe((shifts: Shift[]) => {
+        this.shiftsList = shifts;
       });
     }
 }

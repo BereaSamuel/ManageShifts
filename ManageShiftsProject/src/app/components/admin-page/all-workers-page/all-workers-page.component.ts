@@ -8,12 +8,12 @@ import { User } from 'src/app/model/users';
   styleUrls: ['./all-workers-page.component.css']
 })
 export class AllWorkersPageComponent {
-  constructor(private dataService: DataService) {}
+  constructor(private data: DataService) {}
 
   users: User[] = [];
 
   ngOnInit(): void {
-      this.dataService.getAllEmployees().subscribe((data) => {
+      this.data.getAllEmployees().subscribe((data) => {
       this.users = data.map((e) => {
         return {
           id: e.payload.doc.id,

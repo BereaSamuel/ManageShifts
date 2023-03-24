@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Shift } from 'src/app/model/shifts';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-all-shifts-page',
@@ -10,27 +9,27 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 
 export class AllShiftsPageComponent {
-  constructor(private data: DataService, private firestore: AngularFirestore){}
+  constructor(private data: DataService){}
 
   shifts: Shift[] = [];
 
   ngOnInit(): void {
-    this.data.getAllShifts().subscribe((data) => {
-      this.shifts = data.map((e) => {
-        return{
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Shift),
-        }
-      })
-    })
-  }
+    // this.data.getAllShifts().subscribe((data) => {
+    //   this.shifts = data.map((e) => {
+    //     return {
+    //       id: e.payload.doc.id,
+    //       ...(e.payload.doc.data() as Shift),
+    //     };
+    //   });
+    // });
+}
 
-  deleteShift(shiftId: string) {
-    this.data.deleteShift(shiftId).then(() => {
-      console.log('Shift deleted successfully!');
-      console.log(shiftId)
-    }).catch((error) => {
-      console.log('Error deleting shift:', error);
-    });
-  }
+  // deleteShift(shiftId: string) {
+  //   this.data.deleteShift(shiftId).then(() => {
+  //     console.log('Shift deleted successfully!');
+  //     console.log(shiftId)
+  //   }).catch((error) => {
+  //     console.log('Error deleting shift:', error);
+  //   });
+  // }
 }
