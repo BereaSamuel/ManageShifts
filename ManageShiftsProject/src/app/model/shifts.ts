@@ -1,7 +1,6 @@
-import firebase from 'firebase/compat';
-import Timestamp = firebase.firestore.Timestamp;
-
 export interface Shift {
+  firstName: string;
+  lastName: string;
   id: string;
   date: string;
   startTime: string;

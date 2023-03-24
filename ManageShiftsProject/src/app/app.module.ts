@@ -24,7 +24,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { EmployeesListComponent } from './components/admin-page/employees-list/employees-list.component';
 import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
 import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
 
@@ -39,7 +38,6 @@ import { AllWorkersPageComponent } from './components/admin-page/all-workers-pag
     EditProfileAdminComponent,
     ShiftsUserComponent,
     EditProfileUserComponent,
-    EmployeesListComponent,
     AllShiftsPageComponent,
     AllWorkersPageComponent,
   ],

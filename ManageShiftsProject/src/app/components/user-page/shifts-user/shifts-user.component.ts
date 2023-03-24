@@ -2,6 +2,7 @@ import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { Shift } from 'src/app/model/shifts';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/model/users';
 
 @Component({
   selector: 'app-shifts-user',
@@ -14,6 +15,8 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
 
   shiftsList: Shift[] = [];
   userShiftObj: Shift = {
+    firstName: '',
+    lastName: '',
     id: '',
     date: '',
     startTime: '',
@@ -50,6 +53,19 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
         alert('Fill all the inputs');
         return;
       }
+
+      this.auth.getCurentUser().then((res) => {
+        this.data.retriveUser(res).then((res) => {
+          this.userShiftObj.firstName = res.firstName;
+        })
+      });
+      
+      this.auth.getCurentUser().then((res) => {
+        this.data.retriveUser(res).then((res) => {
+          this.userShiftObj.lastName = res.lastName;
+        })
+      });
+
       this.userShiftObj.id = this.id;
       this.userShiftObj.date = this.date;
       this.userShiftObj.startTime = this.startTime;

@@ -11,6 +11,5 @@ export class AppComponent {
   constructor(private route: Router, private toast: ToastrService) {}
 
   ngOnInit(): void {
-    this.route.navigate(['../home-page-admin']);
   }
 }

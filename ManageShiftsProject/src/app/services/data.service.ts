@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../model/users';
 import { Shift } from '../model/shifts';
 import { AuthService } from './auth.service';
+import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -46,12 +47,14 @@ export class DataService {
       });
     return data;
   }
+  
   addShift(shifts: Shift) {
     this.auth.getCurentUser().then((res) => {
       shifts.id = res;
       return this.firestore.collection('/Shifts').add(shifts);
     });
   }
+  
   getAllShifts() {
     return this.firestore.collection('/Shifts').snapshotChanges();
   }
@@ -62,21 +65,20 @@ export class DataService {
     );
   }
 
-  // Andreea side
-  //add employee
+  //add user
   addEmployee(employee: User) {
     employee.id = this.firestore.createId();
-    return this.firestore.collection('/Employees').add(employee);
+    return this.firestore.collection('/users').add(employee);
   }
 
   //get all employees
   getAllEmployees() {
-    return this.firestore.collection('/Employees').snapshotChanges();
+    return this.firestore.collection('/users').snapshotChanges();
   }
 
   //delete employee
   deleteEmployee(employee: User) {
-    return this.firestore.doc('/Employees/' + employee.id).delete();
+    return this.firestore.doc('/users/' + employee.id).delete();
   }
 
   //updateEmploee
@@ -84,4 +86,10 @@ export class DataService {
     this.deleteEmployee(employee);
     this.addEmployee(employee);
   }
+
+  //delete shift
+  deleteShift(shiftId: string) {
+    return this.firestore.doc('/Shifts/' + shiftId).delete();
+  }
+  
 }

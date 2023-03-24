@@ -1,6 +1,6 @@
 <div>
   <form>
-    <input
+      <input
       type="date"
       class="form-control"
       id="date"
@@ -54,6 +54,8 @@
     <table>
       <thead>
         <tr>
+          <th scope="col">First name</th>
+          <th scope="col">Last name</th>
           <th scope="col">Date</th>
           <th scope="col">Start Time</th>
           <th scope="col">End Time</th>
@@ -64,6 +66,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let shift of shiftsList">
+          <td>{{ shift.firstName }}</td>
+          <td>{{ shift.lastName }}</td>
           <td>{{ shift.date }}</td>
           <td>{{ shift.startTime }}</td>
           <td>{{ shift.endTime }}</td>
