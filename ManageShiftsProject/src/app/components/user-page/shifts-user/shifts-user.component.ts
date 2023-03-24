@@ -11,6 +11,7 @@ import { User } from 'src/app/model/users';
 })
 
 export class ShiftsUserComponent implements OnInit, AfterContentInit {
+  userId: string;
   constructor(private data: DataService, private auth: AuthService) {}
 
   shiftsList: Shift[] = [];
@@ -23,7 +24,8 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
     endTime: '',
     wage: '',
     shiftPlace: '',
-    comment: ''
+    comment: '',
+    userId: ''
   };
 
     id: string = '';
@@ -35,6 +37,8 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
     comment: string = '';
 
     ngOnInit() {
+      this.userId = localStorage.getItem('userUID');
+
       this.getAllShifts();
     }
 
@@ -64,7 +68,8 @@ export class ShiftsUserComponent implements OnInit, AfterContentInit {
           this.userShiftObj.wage = this.wage;
           this.userShiftObj.shiftPlace = this.shiftPlace;
           this.userShiftObj.comment = this.comment;
-
+          this.userShiftObj.userId = this.userId;
+          
           this.data.addShift(this.userShiftObj);
 
           this.resetForm();

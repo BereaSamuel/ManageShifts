@@ -80,19 +80,25 @@ export class AuthService {
     this.curentUser.next(uid);
   }
 
-  // cal back the user from data
+  // call back the user from data
 
   async getCurentUser(): Promise<string> {
     let uid: any;
+    
 
     await this.afAuth.currentUser.then((res) => {
       if (res) {
         uid = res.uid;
+        localStorage.setItem('userUID', uid);
+        console.log(uid)
       } else {
         uid = '';
       }
     });
 
     return uid;
+
+   
   }
+
 }

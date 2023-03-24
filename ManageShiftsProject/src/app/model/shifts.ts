@@ -8,4 +8,5 @@ export interface Shift {
   shiftPlace: string;
   wage: string;
   comment: string;
-}
+  userId: string;
+ }
