@@ -1,6 +1,8 @@
 <mat-toolbar class="navigation-bar" (ngSubmit)="ngOnInit()" >
     <mat-icon class="navigation-bar__logo">
-        <img src="../assets/LOGO-white.png" alt="logo" width="70vw">
+        <a routerLink="/home-page-admin">
+            <img src="../assets/LOGO-white.png" alt="logo" width="70vw">
+        </a>
     </mat-icon>
 
     <span>HELLO, <input type="text" matInput [(ngModel)]="helloUser" style="color: black;"></span>

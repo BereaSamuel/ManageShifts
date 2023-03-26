@@ -3,7 +3,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../model/users';
 import { Shift } from '../model/shifts';
 import { AuthService } from './auth.service';
-import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -67,9 +66,7 @@ export class DataService {
       .valueChanges({ idField: 'id' });
   }
   
-  getAllShifts() {
-    return this.firestore.collection('/Shifts').valueChanges();
-  }
+
 
   //add user
   addEmployee(employee: User) {
@@ -82,20 +79,26 @@ export class DataService {
     return this.firestore.collection('/users').snapshotChanges();
   }
 
-  //delete employee
-  deleteEmployee(employee: User) {
-    return this.firestore.doc('/users/' + employee.id).delete();
+  getAllShifts() {
+    return this.firestore.collection('/Shifts').valueChanges();
   }
 
-  //updateEmploee
-  updateEmployee(employee: User) {
-    this.deleteEmployee(employee);
-    this.addEmployee(employee);
+  //delete employee
+  deleteEmployee(employee: string) {
+    return this.firestore.doc('/users/' + employee).delete();
   }
 
   //delete shift
   deleteShift(shiftId: string) {
     return this.firestore.doc('/Shifts/' + shiftId).delete();
+  }
+    
+  //editEmploee
+  editEmployee(employee: User) {
+    const employeeId = employee.id;
+    delete employee.id; // remove id property from the employee object
+  
+    return this.firestore.collection('/users').doc(employeeId).update(employee);
   }
   
 }

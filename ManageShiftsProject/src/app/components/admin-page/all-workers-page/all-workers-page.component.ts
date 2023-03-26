@@ -13,7 +13,11 @@ export class AllWorkersPageComponent {
   users: User[] = [];
 
   ngOnInit(): void {
-      this.data.getAllEmployees().subscribe((data) => {
+    this.getAllEmployees();
+  }
+
+  getAllEmployees(){
+    this.data.getAllEmployees().subscribe((data) => {
       this.users = data.map((e) => {
         return {
           id: e.payload.doc.id,
@@ -21,5 +25,21 @@ export class AllWorkersPageComponent {
         };
       });
     });
+  }
+
+  deleteEmployee(employee: string){
+    this.data.deleteEmployee(employee).then(() => {
+      console.log('Worker deleted successfully!');
+    }).catch((error) => {
+      console.log('Error deleting worker:', error)
+    })
+  }
+
+  editEmployee(updatedEmployee: User) {
+    this.data.editEmployee(updatedEmployee).then(() => {
+      console.log('Worker updated successfully!');
+    }).catch((error) => {
+      console.log('Error updating worker:', error)
+    })
   }
 }

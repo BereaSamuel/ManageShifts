@@ -26,7 +26,6 @@ getAllShifts() {
   deleteShift(shiftId: string) {
     this.data.deleteShift(shiftId).then(() => {
       console.log('Shift deleted successfully!');
-      console.log(shiftId)
     }).catch((error) => {
       console.log('Error deleting shift:', error);
     });
