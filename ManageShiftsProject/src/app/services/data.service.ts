@@ -66,9 +66,7 @@ export class DataService {
       .valueChanges({ idField: 'id' });
   }
   
-
-
-  //add user
+   //add user
   addEmployee(employee: User) {
     employee.id = this.firestore.createId();
     return this.firestore.collection('/users').add(employee);

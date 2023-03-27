@@ -30,4 +30,10 @@ getAllShifts() {
       console.log('Error deleting shift:', error);
     });
   }
+
+  searchText: string = '';
+
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
+  }
 }

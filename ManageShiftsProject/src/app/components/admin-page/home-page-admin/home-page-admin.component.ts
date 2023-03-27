@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Shift } from 'src/app/model/shifts';
 
 @Component({
   selector: 'app-home-page-admin',
@@ -9,6 +9,10 @@ import { Component } from '@angular/core';
 export class HomePageAdminComponent {
   helloUser: string = 'admin';
 
-  ngOnInit(){}
+  ngOnInit(){
+  }
+
 
 }
+
+

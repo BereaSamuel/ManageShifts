@@ -1,27 +1,40 @@
 <app-home-page-admin></app-home-page-admin>
 
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+
 <table>
     <thead>
       <tr>
-        <th>Worker name</th>
-        <th>Date</th>
-        <th>Start time</th>
-        <th>End time</th>
-        <th>Shift place</th>
-        <th>Wage</th>
-        <th>Comment</th>
+        <div>
+          <th>Worker name</th>
+          <th>Date</th>
+          <th>Start time</th>
+          <th>End time</th>
+          <th>Shift place</th>
+          <th>Wage</th>
+          <th>Comment</th>
+        </div>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let shift of shifts">
-        <td>{{ shift.firstName + ' ' + shift.lastName }}</td>
-        <td>{{ shift.date }}</td>
-        <td>{{ shift.startTime }}</td>
-        <td>{{ shift.endTime }}</td>
-        <td>{{ shift.shiftPlace }}</td>
-        <td>{{ shift.wage }}</td>
-        <td>{{ shift.comment }}</td>
-        <td><button (click)="deleteShift(shift.id)">Delete</button></td>
+        <div class="shifts-container" 
+          *ngIf="searchText === '' 
+          || shift.firstName.toLowerCase().includes(searchText) 
+          || shift.lastName.toLowerCase().includes(searchText) 
+          || shift.shiftPlace.toLowerCase().includes(searchText)
+          || shift.date.toLowerCase().includes(searchText)">
+            <td>{{ shift.firstName + ' ' + shift.lastName }}</td>
+            <td>{{ shift.date }}</td>
+            <td>{{ shift.startTime }}</td>
+            <td>{{ shift.endTime }}</td>
+            <td>{{ shift.shiftPlace }}</td>
+            <td>{{ shift.wage }}</td>
+            <td>{{ shift.comment }}</td>
+            <td><button (click)="deleteShift(shift.id)">Delete</button></td>
+        </div>
       </tr>
     </tbody>
   </table>
+  
+

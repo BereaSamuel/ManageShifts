@@ -20,12 +20,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import {MatListModule} from '@angular/material/list';
+
 import { ToastrModule } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
 import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
+import { SearchComponent } from './components/admin-page/search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import { AllWorkersPageComponent } from './components/admin-page/all-workers-pag
     EditProfileUserComponent,
     AllShiftsPageComponent,
     AllWorkersPageComponent,
+    SearchComponent
   ],
   imports: [
     FormsModule,
@@ -52,6 +56,7 @@ import { AllWorkersPageComponent } from './components/admin-page/all-workers-pag
     MatButtonModule,
     MatCardModule,
     MatTableModule,
+    MatListModule,
 
     BrowserModule,
     AppRoutingModule,
