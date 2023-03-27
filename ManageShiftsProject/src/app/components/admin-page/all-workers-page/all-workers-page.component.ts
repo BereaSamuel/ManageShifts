@@ -12,6 +12,8 @@ export class AllWorkersPageComponent {
 
   users: User[] = [];
 
+  searchText: string = '';
+
   ngOnInit(): void {
     this.getAllEmployees();
   }
@@ -41,5 +43,9 @@ export class AllWorkersPageComponent {
     }).catch((error) => {
       console.log('Error updating worker:', error)
     })
+  }
+
+  onSearchTextEntered(searchValue: string){
+    this.searchText = searchValue;
   }
 }

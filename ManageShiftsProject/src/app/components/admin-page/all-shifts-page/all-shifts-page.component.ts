@@ -13,6 +13,8 @@ export class AllShiftsPageComponent {
 
   shifts: Shift[] = [];
 
+  searchText: string = '';
+
   ngOnInit(): void {
     this.getAllShifts();
 }
@@ -30,8 +32,6 @@ getAllShifts() {
       console.log('Error deleting shift:', error);
     });
   }
-
-  searchText: string = '';
 
   onSearchTextEntered(searchValue: string){
     this.searchText = searchValue;
