@@ -23,7 +23,7 @@
             <td>{{ user.email }}</td>
             <td>{{ user.age }}</td>
             <td><button (click)="deleteEmployee(user.id)">Delete</button></td>
-            <td><button (click)="editEmployee(user)">Edit</button></td>
+            <td><button (click)="openDialog(user)">Edit</button></td>
         </div>
       </tr>
     </tbody>

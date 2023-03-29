@@ -32,9 +32,11 @@
             <td>{{ shift.wage }}</td>
             <td>{{ shift.comment }}</td>
             <td><button (click)="deleteShift(shift.id)">Delete</button></td>
+            <td><button (click)="openDialog(shift)">Edit</button></td>
         </div>
       </tr>
     </tbody>
   </table>
+
   
 

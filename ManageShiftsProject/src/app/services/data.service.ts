@@ -8,6 +8,10 @@ import { AuthService } from './auth.service';
   providedIn: 'root',
 })
 export class DataService {
+  shift: Shift;
+  subscribe(arg0: (shift: Shift[]) => void) {
+    throw new Error('Method not implemented.');
+  }
   insert(
     id: string,
     dbName: string,
@@ -34,6 +38,7 @@ export class DataService {
     });
   }
   constructor(private firestore: AngularFirestore, private auth: AuthService) {}
+
   async retriveUser(id: string): Promise<User> {
     let data: User;
 
@@ -55,7 +60,7 @@ export class DataService {
   shifts.id = shiftId;
 
   // Add the shift to the Firestore collection using the new ID
-  return this.firestore.collection('/Shifts').doc(shiftId).set(shifts);
+  return this.firestore.collection('Shifts').doc(shiftId).set(shifts);
   }
 
   getAllShiftsByUserId(userId: string) {
@@ -98,5 +103,6 @@ export class DataService {
   
     return this.firestore.collection('/users').doc(employeeId).update(employee);
   }
-  
+
+ 
 }

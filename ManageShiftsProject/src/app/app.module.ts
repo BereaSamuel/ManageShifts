@@ -20,7 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 import { ToastrModule } from 'ngx-toastr';
 import { environment } from '../environments/environment';
@@ -29,6 +31,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
 import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
 import { SearchComponent } from './components/admin-page/search/search.component';
+import { ShiftEditComponent } from './components/admin-page/shift-edit/shift-edit.component';
+import { UserEditComponent } from './components/admin-page/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,9 @@ import { SearchComponent } from './components/admin-page/search/search.component
     EditProfileUserComponent,
     AllShiftsPageComponent,
     AllWorkersPageComponent,
-    SearchComponent
+    SearchComponent,
+    ShiftEditComponent,
+    UserEditComponent
   ],
   imports: [
     FormsModule,
@@ -57,6 +63,7 @@ import { SearchComponent } from './components/admin-page/search/search.component
     MatCardModule,
     MatTableModule,
     MatListModule,
+    MatDialogModule,
 
     BrowserModule,
     AppRoutingModule,

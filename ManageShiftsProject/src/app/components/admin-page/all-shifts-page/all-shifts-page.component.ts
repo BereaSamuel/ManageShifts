@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { Shift } from 'src/app/model/shifts';
+import { MatDialog } from '@angular/material/dialog';
+import { ShiftEditComponent } from '../shift-edit/shift-edit.component';
 
 @Component({
   selector: 'app-all-shifts-page',
@@ -9,9 +11,22 @@ import { Shift } from 'src/app/model/shifts';
 })
 
 export class AllShiftsPageComponent {
-  constructor(private data: DataService){}
+  constructor(private data: DataService, private dialog: MatDialog){}
 
   shifts: Shift[] = [];
+
+  shift: Shift = {
+    firstName: '',
+    lastName: '',
+    id: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    wage: '',
+    shiftPlace: '',
+    comment: '',
+    userId: ''
+  };
 
   searchText: string = '';
 
@@ -19,12 +34,12 @@ export class AllShiftsPageComponent {
     this.getAllShifts();
 }
 
-getAllShifts() {
-  this.data.getAllShifts().subscribe((shifts: Shift[]) => {
-    this.shifts = shifts;
-  });
-}
-
+  getAllShifts() {
+    this.data.getAllShifts().subscribe((shifts: Shift[]) => {
+      this.shifts = shifts;
+    });
+  }
+  
   deleteShift(shiftId: string) {
     this.data.deleteShift(shiftId).then(() => {
       console.log('Shift deleted successfully!');
@@ -36,4 +51,12 @@ getAllShifts() {
   onSearchTextEntered(searchValue: string){
     this.searchText = searchValue;
   }
+
+  openDialog(shift: Shift){
+    let dialogRef = this.dialog.open(ShiftEditComponent, {
+      data: shift
+    });
+    
+  }
+
 }

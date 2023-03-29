@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { User } from 'src/app/model/users';
+import { UserEditComponent } from '../user-edit/user-edit.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-all-workers-page',
@@ -8,9 +10,21 @@ import { User } from 'src/app/model/users';
   styleUrls: ['./all-workers-page.component.css']
 })
 export class AllWorkersPageComponent {
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private dialog: MatDialog) {}
 
   users: User[] = [];
+  userObj: User = {
+    id: '',
+    username: '',
+    firstName: '',
+    lastName: '',
+    age: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    userLoggedIn: '',
+    admin: ''
+  };
 
   searchText: string = '';
 
@@ -47,5 +61,12 @@ export class AllWorkersPageComponent {
 
   onSearchTextEntered(searchValue: string){
     this.searchText = searchValue;
+  }
+
+  openDialog(user: User){
+    let dialogRef = this.dialog.open(UserEditComponent, {
+      data: user
+    });
+    
   }
 }
