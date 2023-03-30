@@ -1,0 +1,6 @@
+<h2>This week's shifts:</h2>
+<ul>
+  <li *ngFor="let shift of shifts">
+    {{ shift.firstName }} - {{ shift.startTime | date:'MMM d, h:mm a' }} to {{ shift.endTime | date:'h:mm a' }}
+  </li>
+</ul>

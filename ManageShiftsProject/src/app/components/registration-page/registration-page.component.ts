@@ -32,6 +32,7 @@ export class RegistrationPageComponent implements OnInit {
   password: string = '';
   confirmPassword: string = '';
   userLoggedIn: boolean;
+  shiftNumber: number;
 
   usernamePattern =
     '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{6,15}';
@@ -114,7 +115,8 @@ export class RegistrationPageComponent implements OnInit {
               this.signupForm.value.lastName,
               this.signupForm.value.age,
               this.signupForm.value.confirmPassword,
-              true
+              true,
+              0
               );
           });
           this.router.navigate(['/login-page']);

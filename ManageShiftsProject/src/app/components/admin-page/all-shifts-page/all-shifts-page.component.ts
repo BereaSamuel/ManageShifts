@@ -15,19 +15,6 @@ export class AllShiftsPageComponent {
 
   shifts: Shift[] = [];
 
-  shift: Shift = {
-    firstName: '',
-    lastName: '',
-    id: '',
-    date: '',
-    startTime: '',
-    endTime: '',
-    wage: '',
-    shiftPlace: '',
-    comment: '',
-    userId: ''
-  };
-
   searchText: string = '';
 
   ngOnInit(): void {

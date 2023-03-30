@@ -33,6 +33,8 @@ import { AllWorkersPageComponent } from './components/admin-page/all-workers-pag
 import { SearchComponent } from './components/admin-page/search/search.component';
 import { ShiftEditComponent } from './components/admin-page/shift-edit/shift-edit.component';
 import { UserEditComponent } from './components/admin-page/user-edit/user-edit.component';
+import { WorkerOfTheMonthComponent } from './components/admin-page/worker-of-the-month/worker-of-the-month.component';
+import { WeekShiftsComponent } from './components/admin-page/week-shifts/week-shifts.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { UserEditComponent } from './components/admin-page/user-edit/user-edit.c
     AllWorkersPageComponent,
     SearchComponent,
     ShiftEditComponent,
-    UserEditComponent
+    UserEditComponent,
+    WorkerOfTheMonthComponent,
+    WeekShiftsComponent
   ],
   imports: [
     FormsModule,

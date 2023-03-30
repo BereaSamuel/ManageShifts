@@ -31,14 +31,11 @@ export class ShiftEditComponent {
   };
 
   ngOnInit(): void{
+
   }
 
- 
-  
   updateShift(shiftId: string) {
     this.firestore.collection('Shifts').doc(shiftId).update({
-      firstName: this.shiftData.firstName,
-      lastName: this.shiftData.lastName,
       date: this.shiftData.date,
       startTime: this.shiftData.startTime,
       endTime: this.shiftData.endTime,
@@ -47,8 +44,4 @@ export class ShiftEditComponent {
     })
   }
 
-  
-  deleteShift(shiftId: string) {
-
-  }
 }

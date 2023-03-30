@@ -23,7 +23,8 @@ export class AllWorkersPageComponent {
     password: '',
     confirmPassword: '',
     userLoggedIn: '',
-    admin: ''
+    admin: '',
+    shiftNumber: 0
   };
 
   searchText: string = '';
@@ -67,6 +68,5 @@ export class AllWorkersPageComponent {
     let dialogRef = this.dialog.open(UserEditComponent, {
       data: user
     });
-    
   }
 }

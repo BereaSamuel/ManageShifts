@@ -9,4 +9,5 @@ export interface User {
   confirmPassword: string;
   userLoggedIn: string;
   admin: string;
+  shiftNumber: number;
 }

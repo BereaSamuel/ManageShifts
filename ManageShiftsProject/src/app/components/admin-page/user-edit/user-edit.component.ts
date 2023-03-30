@@ -2,6 +2,7 @@ import { Component, Inject} from '@angular/core';
 import { User } from 'src/app/model/users';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,7 +13,7 @@ export class UserEditComponent {
   dialogForm: any;
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public userData: User, public firestore: AngularFirestore){}
+  constructor(@Inject(MAT_DIALOG_DATA) public userData: User, public firestore: AngularFirestore, private router: Router){}
 
   users: User[] = [];
 
@@ -26,7 +27,8 @@ export class UserEditComponent {
     password: '',
     confirmPassword: '',
     userLoggedIn: '',
-    admin: ''
+    admin: '',
+    shiftNumber: 0
   };
 
   ngOnInit(): void {
@@ -42,7 +44,7 @@ export class UserEditComponent {
       age: this.userData.age
     })
     .then(() => {
-      console.log('User updated successfully!');
+      alert('User updated successfully!');
     })
     .catch((error) => {
       console.log('Error updating user:', error);
