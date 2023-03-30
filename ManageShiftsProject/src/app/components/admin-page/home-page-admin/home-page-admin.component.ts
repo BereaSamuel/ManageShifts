@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-home-page-admin',
   templateUrl: './home-page-admin.component.html',
@@ -9,6 +8,11 @@ import { Component } from '@angular/core';
 export class HomePageAdminComponent {
   helloUser: string = 'admin';
 
-  ngOnInit(){}
+  constructor(){}
 
+  ngOnInit(){
+
+  }
 }
+
+

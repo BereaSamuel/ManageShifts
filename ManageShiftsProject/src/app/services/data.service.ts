@@ -3,12 +3,15 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { User } from '../model/users';
 import { Shift } from '../model/shifts';
 import { AuthService } from './auth.service';
-import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
+  shift: Shift;
+  subscribe(arg0: (shift: Shift[]) => void) {
+    throw new Error('Method not implemented.');
+  }
   insert(
     id: string,
     dbName: string,
@@ -20,7 +23,8 @@ export class DataService {
     lastName: string,
     age: string,
     confirmPassword: string,
-    userLoggedIn: boolean
+    userLoggedIn: boolean,
+    shiftNumber: number
   ) {
     this.firestore.collection(dbName).doc(id).set({
       password: password,
@@ -31,10 +35,12 @@ export class DataService {
       lastName: lastName,
       age: age,
       confirmPassword: confirmPassword,
-      userLoggedIn: userLoggedIn
+      userLoggedIn: userLoggedIn,
+      shiftNumber: shiftNumber
     });
   }
   constructor(private firestore: AngularFirestore, private auth: AuthService) {}
+
   async retriveUser(id: string): Promise<User> {
     let data: User;
 
@@ -48,15 +54,23 @@ export class DataService {
     return data;
   }
   
-  addShift(shifts: Shift) {
+  async addShift(shifts: Shift) {
   // Generate a random ID for the new shift
   const shiftId = this.firestore.createId();
  
   // Set the ID of the shift object to the new ID
   shifts.id = shiftId;
+  const shiftUserUID = shifts.userId
 
   // Add the shift to the Firestore collection using the new ID
-  return this.firestore.collection('/Shifts').doc(shiftId).set(shifts);
+  await this.firestore.collection('Shifts').doc(shiftId).set(shifts);
+  
+  const user = await this.retriveUser(shifts.userId);
+  user.shiftNumber ++;
+
+  this.firestore.collection('users').doc(shiftUserUID).update({
+    shiftNumber: user.shiftNumber
+  })
   }
 
   getAllShiftsByUserId(userId: string) {
@@ -67,11 +81,7 @@ export class DataService {
       .valueChanges({ idField: 'id' });
   }
   
-  getAllShifts() {
-    return this.firestore.collection('/Shifts').valueChanges();
-  }
-
-  //add user
+   //add user
   addEmployee(employee: User) {
     employee.id = this.firestore.createId();
     return this.firestore.collection('/users').add(employee);
@@ -82,20 +92,25 @@ export class DataService {
     return this.firestore.collection('/users').snapshotChanges();
   }
 
-  //delete employee
-  deleteEmployee(employee: User) {
-    return this.firestore.doc('/users/' + employee.id).delete();
+  getAllShifts() {
+    return this.firestore.collection('/Shifts').valueChanges();
   }
 
-  //updateEmploee
-  updateEmployee(employee: User) {
-    this.deleteEmployee(employee);
-    this.addEmployee(employee);
+  //delete employee
+  deleteEmployee(employee: string) {
+    return this.firestore.doc('/users/' + employee).delete();
   }
 
   //delete shift
   deleteShift(shiftId: string) {
     return this.firestore.doc('/Shifts/' + shiftId).delete();
   }
+    
+  //editEmploee
+  editEmployee(employee: User) {
+    const employeeId = employee.id;
+    delete employee.id; // remove id property from the employee object
   
+    return this.firestore.collection('/users').doc(employeeId).update(employee);
+  }
 }
