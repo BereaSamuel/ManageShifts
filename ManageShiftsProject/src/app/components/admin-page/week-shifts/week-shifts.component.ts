@@ -1,36 +1,36 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { format } from 'date-fns';
+import { Shift } from 'src/app/model/shifts';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-week-shifts',
   templateUrl: './week-shifts.component.html',
   styleUrls: ['./week-shifts.component.css']
 })
+
 export class WeekShiftsComponent {
-  constructor(private firestore: AngularFirestore){}
+  constructor(private data: DataService){}
 
-  shifts: any[] = [];
+  shifts: Shift[]=[];
 
-  ngOnInit(): void{
-    const startOfWeek = new Date();
-    const endOfWeek = new Date();
-    startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay());
-    endOfWeek.setDate(endOfWeek.getDate() + (6 - endOfWeek.getDay()));
+  ngOnInit(): void {
+    const today = new Date();
+    const startOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() - 6);
+    const endOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
 
-    const startOfWeekFormatted = format(startOfWeek, 'yyyy-MM-dd');
-    const endOfWeekFormatted = format(endOfWeek, 'yyyy-MM-dd');
-
-    this.firestore.collection('shifts', ref => ref
-      .where('date', '>=', startOfWeekFormatted)
-      .where('date', '<=', endOfWeekFormatted)
-      .orderBy('date', 'asc')
-      .orderBy('startTime', 'asc')
-    )
-    .valueChanges({ idField: 'id' })
-    .subscribe(shifts => {
+    this.data.getShiftsByDateRange(startOfLastWeek, endOfLastWeek).subscribe((shifts: Shift[]) => {
       this.shifts = shifts;
-      console.log('Week shifts:', this.shifts);
+      console.log(shifts)
     });
+  }
+
+  isShiftThisWeek(shift: Shift): boolean {
+    const today = new Date();
+    const startOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() - 6);
+    const endOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
+
+    const shiftDate = new Date(shift.date);
+
+    return shiftDate >= startOfLastWeek && shiftDate <= endOfLastWeek;
   }
 }
