@@ -1,6 +1,11 @@
-<h2>This week's shifts:</h2>
-<ul>
-  <li *ngFor="let shift of shifts">
-    {{ shift.firstName }} - {{ shift.startTime | date:'MMM d, h:mm a' }} to {{ shift.endTime | date:'h:mm a' }}
-  </li>
-</ul>
+<tbody>
+  <p>This week's past shifts:</p>
+  <tr *ngFor="let shift of shifts">
+    <ng-container *ngIf="isShiftThisWeek(shift)">
+      <td>{{ shift.date | date }}</td>
+      <td>{{ shift.startTime }} - {{ shift.endTime }}</td>
+      <td>{{ shift.firstName }}</td>
+      <td>{{ shift.lastName }}</td>
+    </ng-container>
+  </tr>
+</tbody>

@@ -35,6 +35,8 @@ import { ShiftEditComponent } from './components/admin-page/shift-edit/shift-edi
 import { UserEditComponent } from './components/admin-page/user-edit/user-edit.component';
 import { WorkerOfTheMonthComponent } from './components/admin-page/worker-of-the-month/worker-of-the-month.component';
 import { WeekShiftsComponent } from './components/admin-page/week-shifts/week-shifts.component';
+import { FilterByDateRangePipe } from './filter-by-date-range.pipe';
+import { HighestEarningsMonthComponent } from './components/admin-page/highest-earnings-month/highest-earnings-month.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { WeekShiftsComponent } from './components/admin-page/week-shifts/week-sh
     ShiftEditComponent,
     UserEditComponent,
     WorkerOfTheMonthComponent,
-    WeekShiftsComponent
+    WeekShiftsComponent,
+    FilterByDateRangePipe,
+    HighestEarningsMonthComponent
   ],
   imports: [
     FormsModule,

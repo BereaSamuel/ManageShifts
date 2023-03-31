@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore ,AngularFirestoreCollection} from '@angular/fire/compat/firestore';
 import { User } from '../model/users';
 import { Shift } from '../model/shifts';
 import { AuthService } from './auth.service';
+import { emitDistinctChangesOnlyDefaultValue } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   shift: Shift;
+
+  startDate: Date;
+  endDate: Date;
+  
   subscribe(arg0: (shift: Shift[]) => void) {
     throw new Error('Method not implemented.');
   }
+
   insert(
     id: string,
     dbName: string,
@@ -102,8 +108,17 @@ export class DataService {
   }
 
   //delete shift
-  deleteShift(shiftId: string) {
-    return this.firestore.doc('/Shifts/' + shiftId).delete();
+  deleteShift(shiftId:Shift) {
+
+      this.retriveUser(shiftId.userId).then(res=>{
+        this.firestore.collection('users').doc(shiftId.userId).update({
+          shiftNumber: res.shiftNumber-1
+        }).then(res=>{
+           this.firestore.doc('/Shifts/' + shiftId.id).delete();
+        })
+      })
+
+      
   }
     
   //editEmploee
@@ -112,5 +127,41 @@ export class DataService {
     delete employee.id; // remove id property from the employee object
   
     return this.firestore.collection('/users').doc(employeeId).update(employee);
+  }
+
+  // getShiftsByDateRange(startDate: Date, endDate: Date) {
+  //   return this.firestore.collection<Shift>('Shifts', ref => 
+  //     ref.where('date', '>=', startDate).where('date', '<=', endDate))
+  //     .valueChanges({ idField: 'id' });
+  // }
+
+  getShiftsByDateRange(startDate: Date, endDate: Date) {
+    // return this.firestore.collection<Shift>('Shifts', ref => 
+    //   ref.where('date', '>=', startDate))
+    //   .valueChanges({ idField: 'id' });
+
+    //   const startdatenew= new Intl.DateTimeFormat('en-UK',{year:'numeric',month:'2-digit',day:'2-digit'}).format(startDate).replace(/\//g,"-");
+    //  const dbstartdate= this.formatDate(startdatenew);
+    //  console.log(dbstartdate);
+        
+  // const ref = this.firestore.collection<Shift>('Shifts',ref=>ref.where('comment','==','sd'));
+  //     return ref.valueChanges();
+
+      //   return this.firestore.collection<Shift>('Shifts', ref => 
+      // ref.where('date', '>=', dbstartdate))
+      // .valueChanges({ idField: 'id' });
+      return this.firestore.collection<Shift>('Shifts').valueChanges();
+  }
+
+  formatDate( date:string):string{
+    let transform= date.split('-');
+    let day = transform[0];
+    let month=transform[1];
+    let year=transform[2];
+    return year+'-'+month+'-'+day
+
+
+
+
   }
 }

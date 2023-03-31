@@ -27,12 +27,18 @@ export class AllShiftsPageComponent {
     });
   }
   
-  deleteShift(shiftId: string) {
-    this.data.deleteShift(shiftId).then(() => {
-      console.log('Shift deleted successfully!');
-    }).catch((error) => {
-      console.log('Error deleting shift:', error);
-    });
+  deleteShift(shiftId:Shift) {
+    this.data.deleteShift(shiftId);
+    //pas 1 - folosinf userid din shift cautam usersul in colectia de users
+    //pas 2 --schimb valoarea de la shifts number cu minus 1
+    //pas 3 --delete shiftul 
+
+
+    // this.data.deleteShift(shiftId).then(() => {
+    //   console.log('Shift deleted successfully!');
+    // }).catch((error) => {
+    //   console.log('Error deleting shift:', error);
+    // });
   }
 
   onSearchTextEntered(searchValue: string){
