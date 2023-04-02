@@ -1,4 +1,5 @@
-<app-home-page-admin></app-home-page-admin>
+<body>
+  <app-home-page-admin></app-home-page-admin>
 
 <app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
 
@@ -6,25 +7,32 @@
 <table>
     <thead>
       <tr>
-        <th>Worker name</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Age</th>
+        <th scope="col">Worker name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
-        <div class="users-container"
+        <div class="users-container" style="width: 100vw;"
         *ngIf="searchText === ''
         || user.firstName.toLowerCase().includes(searchText) 
         || user.lastName.toLowerCase().includes(searchText)">
             <td>{{ user.firstName + ' ' + user.lastName }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.email }}</td>
             <td>{{ user.age }}</td>
-            <td><button (click)="deleteEmployee(user.id)">Delete</button></td>
-            <td><button (click)="openDialog(user)">Edit</button></td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.password }}</td>
+            <td>
+              <button (click)="deleteEmployee(user.id)">Delete</button>
+              <button (click)="openDialog(user)">Edit</button>
+            </td>
         </div>
       </tr>
     </tbody>
   </table>
+
+  <app-worker-of-the-month></app-worker-of-the-month>
+
+</body>

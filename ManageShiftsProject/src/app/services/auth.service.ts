@@ -58,7 +58,7 @@ export class AuthService {
 
           if (user && user.email.includes('admin')) {
             this.admin = true;
-            this.router.navigate(['/home-page-admin']);
+            this.router.navigate(['/home-page']);
           } else {
             this.admin = false;
             this.router.navigate(['/home-page-user']);

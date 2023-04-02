@@ -37,6 +37,7 @@ import { WorkerOfTheMonthComponent } from './components/admin-page/worker-of-the
 import { WeekShiftsComponent } from './components/admin-page/week-shifts/week-shifts.component';
 import { FilterByDateRangePipe } from './filter-by-date-range.pipe';
 import { HighestEarningsMonthComponent } from './components/admin-page/highest-earnings-month/highest-earnings-month.component';
+import { HomePageComponent } from './components/admin-page/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { HighestEarningsMonthComponent } from './components/admin-page/highest-e
     WorkerOfTheMonthComponent,
     WeekShiftsComponent,
     FilterByDateRangePipe,
-    HighestEarningsMonthComponent
+    HighestEarningsMonthComponent,
+    HomePageComponent,
   ],
   imports: [
     FormsModule,
