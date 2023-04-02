@@ -9,26 +9,33 @@ import { Shift } from 'src/app/model/shifts';
 export class HighestEarningsMonthComponent {
 
   @Input() shifts: Shift[] = [];
+
   highestEarningMonth: string = '';
 
-  getHighestEarningsMonth() {
-    let monthEarningsMap = new Map<string, number>();
-    this.shifts.forEach((shift) => {
-      let earnings = parseFloat(shift.wage);
-      let date = new Date(shift.date);
-      let month = date.toLocaleString('default', { month: 'long' });
-      if (monthEarningsMap.has(month)) {
-        earnings += monthEarningsMap.get(month)!;
-      }
-      monthEarningsMap.set(month, earnings);
-    });
-
-    let highestEarnings = 0;
-    monthEarningsMap.forEach((earnings, month) => {
-      if (earnings > highestEarnings) {
-        highestEarnings = earnings;
-        this.highestEarningMonth = month;
-      }
-    });
+  ngOnInit(): void{
+    this.highestEarningMonth = this.getHighestEarningsMonth();
   }
+
+  getHighestEarningsMonth() {
+    const earningsByMonth = {};
+    for (const shift of this.shifts) {
+      const month = new Date(shift.date).getMonth();
+      const earnings = shift.wage;
+      if (earningsByMonth[month]) {
+        earningsByMonth[month] += earnings;
+      } else {
+        earningsByMonth[month] = earnings;
+      }
+    }
+    let highestEarnings = 0;
+    let highestEarningsMonth = '';
+    for (const month in earningsByMonth) {
+      if (earningsByMonth[month] > highestEarnings) {
+        highestEarnings = earningsByMonth[month];
+        highestEarningsMonth = new Date(0, parseInt(month)).toLocaleString('default', { month: 'long' });
+      }
+    }
+    return highestEarningsMonth;
+  }
+
 }
