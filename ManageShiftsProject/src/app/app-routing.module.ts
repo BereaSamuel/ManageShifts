@@ -14,6 +14,7 @@ import { HomePageUserComponent } from './components/user-page/home-page-user/hom
 import { EditProfileUserComponent } from './components/user-page/edit-profile-user/edit-profile-user.component';
 import { ShiftsUserComponent } from './components/user-page/shifts-user/shifts-user.component';
 import { GuardGuard } from './guard/auth.guard';
+import { HomePageComponent } from './components/admin-page/home-page/home-page.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,11 @@ const routes: Routes = [
   {
     path: 'reset-password-page',
     component: ResetPasswordPageComponent,
+  },
+
+  {
+    path: 'home-page',
+    component: HomePageComponent,
   },
 
   {
