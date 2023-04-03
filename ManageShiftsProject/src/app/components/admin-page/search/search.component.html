@@ -1,4 +1,8 @@
 <div class="search-container">
-    <h2>Search:</h2>
-    <input type="text" [(ngModel)] = "enteredSearchValue" (input)="onSearchTextChanges()">
+  <h2>Search:</h2>
+  <input
+    type="text"
+    [(ngModel)]="enteredSearchValue"
+    (input)="onSearchTextChanges()"
+  />
 </div>

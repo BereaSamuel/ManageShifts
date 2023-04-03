@@ -1,28 +1,46 @@
-<form [name]="loginForm" [formGroup]="loginForm" class="login-form" (ngSubmit)="loginUser()">
-    <mat-card-header>
-        <mat-card-title>LOGIN</mat-card-title>
-    </mat-card-header>
-    
-    <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput>
-        <mat-error *ngIf="loginForm.controls['email'].errors?.['required']">Field cannot be empty</mat-error>
-    </mat-form-field>
-    
-    <mat-form-field>
-        <mat-label>Password</mat-label>
-        <input  formControlName="password" type="password" matInput>
-        <mat-error *ngIf="loginForm.controls['password'].errors?.['required']">Field cannot be empty</mat-error>
-    </mat-form-field>
-      
-    <a mat-raised-button color="primary" class="login-form__button" [disabled]="!loginForm.valid" (click)="loginUser()"><span>LOGIN</span></a>
+<form
+  [name]="loginForm"
+  [formGroup]="loginForm"
+  class="login-form"
+  (ngSubmit)="loginUser()"
+>
+  <mat-card-header>
+    <mat-card-title>LOGIN</mat-card-title>
+  </mat-card-header>
 
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput />
+    <mat-error *ngIf="loginForm.controls['email'].errors?.['required']"
+      >Field cannot be empty</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input formControlName="password" type="password" matInput />
+    <mat-error *ngIf="loginForm.controls['password'].errors?.['required']"
+      >Field cannot be empty</mat-error
+    >
+  </mat-form-field>
+
+  <a
+    mat-raised-button
+    color="primary"
+    class="login-form__button"
+    [disabled]="!loginForm.valid"
+    (click)="loginUser()"
+    ><span class="loginBtn">LOGIN</span></a
+  >
 </form>
 
-
 <div class="login-form__no-account-forgot-password">
-    <p>Don't have an account? <span routerLink="/registration">Sign up here.</span></p>
+  <p>
+    Don't have an account? Sign up<span routerLink="/registration"> here.</span>
+  </p>
 
-    <p>Forgot your password? <span routerLink="/reset-password-page">Reset password.</span></p>
+  <p>
+    Forgot your password?
+    <span routerLink="/reset-password-page">Reset password.</span>
+  </p>
 </div>
-

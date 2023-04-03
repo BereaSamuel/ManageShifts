@@ -36,7 +36,7 @@
       placeholder="Hourly wage"
     />
     <span>
-      <label for="shiftPlace">Shift place:</label>
+      <label for="shiftPlace" class="shiftPlaceLabel">Shift place:</label>
       <select
         id="shiftPlace"
         name="shiftPlace"
@@ -84,7 +84,9 @@
             "
           >
             <tr class="containerAddedTabel">
-              <td>{{ shift.lastName + ", " + shift.firstName }}</td>
+              <td>
+                {{ shift.lastName + ", " + shift.firstName }}
+              </td>
               <td>{{ shift.date }}</td>
               <td>{{ shift.startTime }}</td>
               <td>{{ shift.endTime }}</td>
