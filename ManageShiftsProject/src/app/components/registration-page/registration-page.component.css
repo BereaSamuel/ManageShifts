@@ -1,33 +1,39 @@
-.registration-form{
-    background-color: black;
-    border-radius: 1rem;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    height: fit-content;
-    margin: auto;
-    padding: 2rem;
-    text-align: center;
-    width: 30vw;
+.registration-form {
+  margin-top: 20px;
+  background-color: black;
+  border-radius: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: fit-content;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  width: 30vw;
 }
 
-p{
-    font-size: 12px;
+p {
+  font-size: 12px;
 }
 
-.registration-form__button{
-    border: 1px solid white;
-    border-radius: 0.5rem;
-    color: white;
-    font-size: larger;
+.registration-form__button {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  color: red;
+  font-size: larger;
+}
+.signupBtn {
+  color: white;
+}
+mat-form-field {
+  height: 8vh;
+  font-size: 14px;
 }
 
-mat-form-field{
-    height: 8vh;
-    font-size: 14px;
+.have-account {
+  text-align: center;
 }
-
-.have-account{
-    text-align: center;
+.redirectHere {
+  color: blue;
 }

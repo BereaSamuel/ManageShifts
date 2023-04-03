@@ -21,3 +21,9 @@ body {
   height: fit-content;
   width: fit-content;
 }
+.helloUserInput {
+  background-color: black;
+  color: white;
+  font-size: 20px;
+  border: none;
+}

@@ -7,14 +7,16 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 @Component({
   selector: 'app-shift-edit',
   templateUrl: './shift-edit.component.html',
-  styleUrls: ['./shift-edit.component.css']
+  styleUrls: ['./shift-edit.component.css'],
 })
-
 export class ShiftEditComponent {
   dialogForm: any;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public shiftData: Shift, private firestore: AngularFirestore){}
-  
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public shiftData: Shift,
+    private firestore: AngularFirestore
+  ) {}
+
   shifts: Shift[] = [];
 
   shift: Shift = {
@@ -27,12 +29,11 @@ export class ShiftEditComponent {
     wage: '',
     shiftPlace: '',
     comment: '',
-    userId: ''
+    userId: '',
+    totalEarnings: '',
   };
 
-  ngOnInit(): void{
-
-  }
+  ngOnInit(): void {}
 
   updateShift(shiftId: string) {
     this.firestore.collection('Shifts').doc(shiftId).update({
@@ -40,8 +41,7 @@ export class ShiftEditComponent {
       startTime: this.shiftData.startTime,
       endTime: this.shiftData.endTime,
       wage: this.shiftData.wage,
-      shiftPlace: this.shiftData.shiftPlace
-    })
+      shiftPlace: this.shiftData.shiftPlace,
+    });
   }
-
 }

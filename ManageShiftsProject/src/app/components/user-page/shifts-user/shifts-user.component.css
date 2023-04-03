@@ -57,3 +57,10 @@ h1 {
   margin-top: 10px;
   font-size: 16px;
 }
+.shiftPlaceLabel {
+  color: white;
+  margin-right: 100px;
+}
+.green-cell {
+  background-color: green;
+}
