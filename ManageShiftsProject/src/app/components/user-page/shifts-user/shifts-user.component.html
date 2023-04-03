@@ -1,8 +1,9 @@
 <app-home-page-user></app-home-page-user>
-
-<div>
-  <form>
-      <input
+<br />
+<app-search (searchTextChanged)="onSearchTextEntered($event)"></app-search>
+<div class="container">
+  <form class="containerAddShift">
+    <input
       type="date"
       class="form-control"
       id="date"
@@ -34,14 +35,20 @@
       [(ngModel)]="wage"
       placeholder="Hourly wage"
     />
-    <input
-      type="text"
-      class="form-control"
-      id="shiftPlace"
-      name="shiftPlace"
-      [(ngModel)]="shiftPlace"
-      placeholder="Shift Place"
-    />
+    <span>
+      <label for="shiftPlace">Shift place:</label>
+      <select
+        id="shiftPlace"
+        name="shiftPlace"
+        [(ngModel)]="shiftPlace"
+        class="form-control"
+      >
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select></span
+    >
     <input
       type="text"
       class="form-control"
@@ -50,9 +57,9 @@
       [(ngModel)]="comment"
       placeholder="Comment"
     />
-    <button class="shiftList" (click)="addShift()">Add Shift</button>
+    <button class="shiftListBtn" (click)="addShift()">Add Shift</button>
   </form>
-  <div>
+  <div class="containerTabel">
     <table>
       <thead>
         <tr>
@@ -62,20 +69,37 @@
           <th scope="col">End Time</th>
           <th scope="col">Wage</th>
           <th scope="col">Shift Place</th>
+          <th scope="col">Total earnings</th>
           <th scope="col">Comment</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let shift of shiftsList">
-          <td>{{ shift.firstName + ' ' +shift.lastName}}</td>
-          <td>{{ shift.date }}</td>
-          <td>{{ shift.startTime }}</td>
-          <td>{{ shift.endTime }}</td>
-          <td>{{ shift.wage }}</td>
-          <td>{{ shift.shiftPlace }}</td>
-          <td>{{ shift.comment }}</td>
-        </tr>
+        <ng-container *ngFor="let shift of shiftsList">
+          <ng-container
+            *ngIf="
+              searchText === '' ||
+              shift.shiftPlace.toLowerCase().includes(searchText) ||
+              shift.date.toLowerCase().includes(searchText)
+            "
+          >
+            <tr class="containerAddedTabel">
+              <td>{{ shift.lastName + ", " + shift.firstName }}</td>
+              <td>{{ shift.date }}</td>
+              <td>{{ shift.startTime }}</td>
+              <td>{{ shift.endTime }}</td>
+              <td>{{ shift.wage }}</td>
+              <td>{{ shift.shiftPlace }}</td>
+              <td>{{ shift.totalEarnings }}$</td>
+              <td>{{ shift.comment }}</td>
+              <td>
+                <button (click)="editShift(shift)">Edit</button>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
       </tbody>
     </table>
+    <h1>The highest Mounth earnings: {{ getMonthWithHighestEarnings() }}$</h1>
   </div>
 </div>

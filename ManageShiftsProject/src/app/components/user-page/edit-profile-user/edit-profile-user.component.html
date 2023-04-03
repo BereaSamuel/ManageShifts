@@ -1,29 +1,10 @@
+<app-home-page-user></app-home-page-user>
 <form
   [formGroup]="userInfoEdit"
   class="edit-profile-form"
   (ngSubmit)="ngOnInit()"
 >
-  <mat-card>
-    <mat-card-header>EDIT PROFILE</mat-card-header>
-  </mat-card>
-
-  <mat-form-field>
-    <mat-label>Username</mat-label>
-    <input
-      formControlName="usernameEdit"
-      matInput
-      type="text"
-      placeholder="Username"
-    />
-    <mat-error
-      *ngIf="userInfoEdit.controls['usernameEdit'].errors?.['required']"
-      >Field cannot be empty</mat-error
-    >
-    <mat-error *ngIf="userInfoEdit.controls['usernameEdit'].errors?.['pattern']"
-      >Must have at least 6 characters. Use letters, numbers, special
-      character.</mat-error
-    >
-  </mat-form-field>
+  <mat-card-header>EDIT PROFILE</mat-card-header>
 
   <mat-form-field>
     <mat-label>First name</mat-label>
@@ -109,30 +90,11 @@
     >
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Confirm password</mat-label>
-    <input
-      formControlName="confirmPasswordEdit"
-      matInput
-      type="password"
-      placeholder="Confirm Password"
-    />
-    <mat-error
-      *ngIf="userInfoEdit.controls['confirmPasswordEdit'].errors?.['required']"
-      >Field cannot be empty</mat-error
-    >
-    <mat-error
-      *ngIf="userInfoEdit.controls['confirmPasswordEdit'].errors?.['mustMatch']"
-      >Confirmation password must be the same as password</mat-error
-    >
-  </mat-form-field>
-
   <a
     mat-raised-button
     color="primary"
     class="edit-profile-form__button"
-    [disabled]="!userInfoEdit.valid"
-    (click)="ngOnInit()"
+    (click)="updateEdit()"
     ><span>UPDATE</span></a
   >
 </form>

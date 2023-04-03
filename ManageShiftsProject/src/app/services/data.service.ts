@@ -42,7 +42,10 @@ export class DataService {
       age: age,
       confirmPassword: confirmPassword,
       userLoggedIn: userLoggedIn,
+
+
       shiftNumber: shiftNumber
+
     });
   }
   constructor(private firestore: AngularFirestore, private auth: AuthService) {}
@@ -59,7 +62,18 @@ export class DataService {
       });
     return data;
   }
-  
+
+
+  addShift(shifts: Shift) {
+    // Generate a random ID for the new shift
+    const shiftId = this.firestore.createId();
+
+    // Set the ID of the shift object to the new ID
+    shifts.id = shiftId;
+
+    // Add the shift to the Firestore collection using the new ID
+    return this.firestore.collection('/Shifts').doc(shiftId).set(shifts);
+
   async addShift(shifts: Shift) {
   // Generate a random ID for the new shift
   const shiftId = this.firestore.createId();
@@ -77,17 +91,25 @@ export class DataService {
   this.firestore.collection('users').doc(shiftUserUID).update({
     shiftNumber: user.shiftNumber
   })
+
   }
 
   getAllShiftsByUserId(userId: string) {
     return this.firestore
-      .collection('/Shifts', (ref) =>
-        ref.where('userId', '==', userId)
-      )
+      .collection('/Shifts', (ref) => ref.where('userId', '==', userId))
       .valueChanges({ idField: 'id' });
   }
+
+
+  getAllShifts() {
+    return this.firestore.collection('/Shifts').valueChanges();
+  }
+
+  //add user
+
   
    //add user
+
   addEmployee(employee: User) {
     employee.id = this.firestore.createId();
     return this.firestore.collection('/users').add(employee);
@@ -120,6 +142,13 @@ export class DataService {
 
       
   }
+
+  deleteShifts(shiftId: string) {
+    this.firestore.collection('Shifts').doc(shiftId).delete();
+  }
+  getCurentUserDetails(uid: string) {
+    return this.firestore.collection('users').doc(uid).get();
+
     
   //editEmploee
   editEmployee(employee: User) {
@@ -159,6 +188,7 @@ export class DataService {
     let month=transform[1];
     let year=transform[2];
     return year+'-'+month+'-'+day
+
 
 
 

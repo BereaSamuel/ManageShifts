@@ -30,6 +30,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
 import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
+
+import { SearchComponent } from './components/user-page/search/search.component';
+
 import { SearchComponent } from './components/admin-page/search/search.component';
 import { ShiftEditComponent } from './components/admin-page/shift-edit/shift-edit.component';
 import { UserEditComponent } from './components/admin-page/user-edit/user-edit.component';
@@ -38,6 +41,7 @@ import { WeekShiftsComponent } from './components/admin-page/week-shifts/week-sh
 import { FilterByDateRangePipe } from './filter-by-date-range.pipe';
 import { HighestEarningsMonthComponent } from './components/admin-page/highest-earnings-month/highest-earnings-month.component';
 import { HomePageComponent } from './components/admin-page/home-page/home-page.component';
+
 
 @NgModule({
   declarations: [
@@ -53,6 +57,8 @@ import { HomePageComponent } from './components/admin-page/home-page/home-page.c
     AllShiftsPageComponent,
     AllWorkersPageComponent,
     SearchComponent,
+
+
     ShiftEditComponent,
     UserEditComponent,
     WorkerOfTheMonthComponent,
@@ -60,6 +66,7 @@ import { HomePageComponent } from './components/admin-page/home-page/home-page.c
     FilterByDateRangePipe,
     HighestEarningsMonthComponent,
     HomePageComponent,
+
   ],
   imports: [
     FormsModule,
