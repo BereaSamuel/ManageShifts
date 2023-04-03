@@ -1,0 +1,28 @@
+<div class="user-edit-container">
+    <div>
+        <label>First name:</label>
+        <input type="text" [(ngModel)]="userData.firstName"/>
+    </div>
+
+    <div>
+        <label>Last name:</label>
+        <input type="text" [(ngModel)]="userData.lastName"/>
+    </div>
+
+    <div>
+        <label>Username:</label>
+        <input type="text" [(ngModel)]="userData.username"/>
+    </div>
+
+    <div>
+        <label>Email:</label>
+        <input type="text" [(ngModel)]="userData.email"/>
+    </div>
+
+    <div>
+        <label>Age:</label>
+        <input type="text" [(ngModel)]="userData.age"/>
+    </div>
+
+    <button (click)="updateUser(userData.id)">Update</button>
+</div>

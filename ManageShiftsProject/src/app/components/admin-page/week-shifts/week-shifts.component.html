@@ -1,0 +1,33 @@
+
+<h2>This week's past shifts:</h2>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Worker name</th>
+      <th scope="col">Date</th>
+      <th scope="col">Start time</th>
+      <th scope="col">End time</th>
+      <th scope="col">Shift place</th>
+      <th scope="col">Wage</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shift of shifts">
+      <ng-container *ngIf="isShiftThisWeek(shift)">
+        <td>{{ shift.firstName + ' ' + shift.lastName }}</td>
+              <td>{{ shift.date }}</td>
+              <td>{{ shift.startTime }}</td>
+              <td>{{ shift.endTime }}</td>
+              <td>{{ shift.shiftPlace }}</td>
+              <td>{{ shift.wage }}</td>
+              <td>{{ shift.comment }}</td>
+              <td>
+                <button (click)="deleteShift(shift)">Delete</button>
+                <button (click)="openDialog(shift)">Edit</button>
+              </td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

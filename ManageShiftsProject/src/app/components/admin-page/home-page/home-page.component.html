@@ -1,6 +1,6 @@
 <mat-toolbar class="navigation-bar" (ngSubmit)="ngOnInit()" >
     <mat-icon class="navigation-bar__logo">
-        <a routerLink="/home-page">
+        <a routerLink="/home-page-admin">
             <img src="../assets/LOGO-white.png" alt="logo" width="70vw">
         </a>
     </mat-icon>
@@ -14,4 +14,9 @@
     <a mat-button routerLink="/login">LOG OUT</a>
 </mat-toolbar>
 
+<app-week-shifts></app-week-shifts>
+
+<!-- <app-highest-earnings-month
+  [shifts]="shifts"
+></app-highest-earnings-month> -->
 

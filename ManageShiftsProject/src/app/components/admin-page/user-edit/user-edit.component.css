@@ -1,0 +1,23 @@
+.user-edit-container{
+    padding: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+input{
+    color: black;
+}
+
+button {
+    padding: 8px;
+    background-color: #009879;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 8px;
+  }
+  
+  button:hover {
+    background-color: #02d0a7;
+  }

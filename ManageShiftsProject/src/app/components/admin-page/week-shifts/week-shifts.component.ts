@@ -5,12 +5,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShiftEditComponent } from '../shift-edit/shift-edit.component';
 
 @Component({
-  selector: 'app-all-shifts-page',
-  templateUrl: './all-shifts-page.component.html',
-  styleUrls: ['./all-shifts-page.component.css']
+  selector: 'app-week-shifts',
+  templateUrl: './week-shifts.component.html',
+  styleUrls: ['./week-shifts.component.css']
 })
 
-export class AllShiftsPageComponent {
+export class WeekShiftsComponent {
   constructor(private data: DataService, private dialog: MatDialog){}
 
   shifts: Shift[] = [];
@@ -18,15 +18,26 @@ export class AllShiftsPageComponent {
   searchText: string = '';
 
   ngOnInit(): void {
-    this.getAllShifts();
-}
+    const today = new Date();
+    const startOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() - 6);
+    const endOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
 
-  getAllShifts() {
-    this.data.getAllShifts().subscribe((shifts: Shift[]) => {
+    this.data.getShiftsByDateRange(startOfLastWeek, endOfLastWeek).subscribe((shifts: Shift[]) => {
       this.shifts = shifts;
+      console.log(shifts)
     });
   }
-  
+
+  isShiftThisWeek(shift: Shift): boolean {
+    const today = new Date();
+    const startOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay() - 6);
+    const endOfLastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
+
+    const shiftDate = new Date(shift.date);
+
+    return shiftDate >= startOfLastWeek && shiftDate <= endOfLastWeek;
+  }
+
   deleteShift(shiftId:Shift) {
     this.data.deleteShift(shiftId);
     //pas 1 - folosinf userid din shift cautam usersul in colectia de users
@@ -51,5 +62,4 @@ export class AllShiftsPageComponent {
     });
     
   }
-
 }

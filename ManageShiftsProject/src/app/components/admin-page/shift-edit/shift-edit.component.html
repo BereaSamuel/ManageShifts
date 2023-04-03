@@ -1,0 +1,28 @@
+  <div class="shift-edit-container">
+      <div>
+        <label>Date:</label>
+        <input type="date" [(ngModel)]="shiftData.date">
+      </div>
+      <div>
+        <label>Start time:</label>
+        <input type="time" [(ngModel)]="shiftData.startTime">
+      </div>
+      <div>
+        <label>End time:</label>
+        <input type="time" [(ngModel)]="shiftData.endTime">
+      </div>
+      <div>
+        <label>Shift place:</label>
+        <input type="text" [(ngModel)]="shiftData.shiftPlace">
+      </div>
+      <div>
+        <label>Wage:</label>
+        <input type="number" [(ngModel)]="shiftData.wage">
+      </div>
+      <div>
+        <label>Comment:</label>
+        <textarea [(ngModel)]="shiftData.comment"></textarea>
+      </div>
+      <button (click)="updateShift(shiftData.id)">Update</button>
+  </div>
+  
