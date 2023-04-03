@@ -1,0 +1,31 @@
+.edit-profile-form {
+  background-color: black;
+  border-radius: 1rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: fit-content;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  width: 30vw;
+  margin-top: 20px;
+}
+
+p {
+  font-size: 1px;
+}
+
+.edit-profile-form__button {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  color: white;
+  width: 150px;
+  margin-left: 37%;
+}
+
+mat-form-field {
+  height: 8vh;
+  font-size: 14px;
+}

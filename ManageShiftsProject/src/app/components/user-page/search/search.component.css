@@ -1,0 +1,7 @@
+input {
+  color: black;
+}
+.search-container {
+  margin-left: 50%;
+  position: relative;
+}

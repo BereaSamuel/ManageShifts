@@ -9,4 +9,5 @@ export interface Shift {
   wage: string;
   comment: string;
   userId: string;
- }
+  totalEarnings: string;
+}

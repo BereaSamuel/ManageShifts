@@ -26,6 +26,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AllShiftsPageComponent } from './components/admin-page/all-shifts-page/all-shifts-page.component';
 import { AllWorkersPageComponent } from './components/admin-page/all-workers-page/all-workers-page.component';
+import { SearchComponent } from './components/user-page/search/search.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AllWorkersPageComponent } from './components/admin-page/all-workers-pag
     EditProfileUserComponent,
     AllShiftsPageComponent,
     AllWorkersPageComponent,
+    SearchComponent,
   ],
   imports: [
     FormsModule,

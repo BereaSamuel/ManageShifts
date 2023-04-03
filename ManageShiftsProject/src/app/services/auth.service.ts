@@ -19,7 +19,7 @@ export class AuthService {
 
   constructor(private router: Router, private afAuth: AngularFireAuth) {
     this.userLoggedIn = false;
-
+    afAuth.authState;
     this.admin = false;
 
     this.afAuth.onAuthStateChanged((user) => {
@@ -86,7 +86,7 @@ export class AuthService {
 
   async getCurentUser(): Promise<string> {
     let uid: any;
-    
+
     await this.afAuth.currentUser.then((res) => {
       if (res) {
         uid = res.uid;
@@ -96,8 +96,5 @@ export class AuthService {
     });
 
     return uid;
-
-   
   }
-
 }
